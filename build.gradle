@@ -41,6 +41,3 @@ int getCodeFromName(String versionName) {
     println "VersionCode: " + code
     return code
 }
-
-
-

@@ -1,2 +1,2 @@
-include ':app', ':base', ':common', ':main'
+include ':app', ':base', ':common', ':main', ':utils'
 rootProject.name='FeHome'

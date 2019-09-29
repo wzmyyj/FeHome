@@ -1,10 +1,10 @@
 ext {
 
     android = [
-            compileSdkVersion : 29,
-            buildToolsVersion : "29.0.0",
-            targetSdkVersion  : 29,
-            minSdkVersion     : 21,
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.0",
+            targetSdkVersion : 29,
+            minSdkVersion    : 21,
     ]
 
 
@@ -25,15 +25,13 @@ ext {
             androidx_appcompat       : "androidx.appcompat:appcompat:${version.androidx}",
             androidx_core            : "androidx.core:core-ktx:${version.androidx}",
             androidx_constraintlayout: "androidx.constraintlayout:constraintlayout:1.1.3",
+            androidx_lifecycle_java8 : "android.arch.lifecycle:common-java8:${version.androidx}",
+
 
             //test
             junit                    : "junit:junit:4.12",
             test_runner              : "androidx.test:runner:1.2.0",
             test_espresso            : "androidx.test.espresso:espresso-core:3.2.0",
-
-            //Google AAC
-            lifecycle                : "android.arch.lifecycle:extensions:1.1.1",
-            lifecycle_compiler       : "android.arch.lifecycle:compiler:1.1.1",
 
             //network
             retrofit2                : "com.squareup.retrofit2:retrofit:${version.retrofit}",
