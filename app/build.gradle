@@ -50,4 +50,7 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies.test_espresso
 
 
+    api project(':common')
+
+
 }

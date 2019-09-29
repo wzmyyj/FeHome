@@ -48,6 +48,9 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies.test_runner
     androidTestImplementation rootProject.ext.dependencies.test_espresso
 
+    api project(':base')
+    api project(':utils')
+    api project(':adapter')
 
 
 }
