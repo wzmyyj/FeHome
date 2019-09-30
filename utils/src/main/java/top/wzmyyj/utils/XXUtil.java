@@ -20,7 +20,7 @@ public class XXUtil {
      * no instances.
      */
     private XXUtil() {
-        throw new RuntimeException("No " + TAG + " instances for you!");
+        throw new UnsupportedOperationException(TAG + "you can't instantiate me.");
     }
 
     /**

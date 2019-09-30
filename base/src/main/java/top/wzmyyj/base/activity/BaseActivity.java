@@ -9,5 +9,5 @@ import androidx.appcompat.app.AppCompatActivity;
  * @version 1.0
  * @since 1.0
  */
-public class FeActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity {
 }

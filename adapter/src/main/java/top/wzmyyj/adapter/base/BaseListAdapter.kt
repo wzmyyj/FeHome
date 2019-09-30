@@ -14,11 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
  * @since 1.0
  */
 abstract class BaseListAdapter<M : IModelType> :
-    RecyclerView.Adapter<BaseListAdapter.BindingViewHolder>() {
+    RecyclerView.Adapter<BaseListAdapter.BindingViewHolder>(), IMutableListData<M> {
     private val items: MutableList<M> = ArrayList()
 
-    private val ivdManager: ViewTypeDelegateManager<M> =
-        ViewTypeDelegateManager()
+    private val ivdManager: ViewTypeDelegateManager<M> = ViewTypeDelegateManager()
 
     class BindingViewHolder(val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -29,7 +28,6 @@ abstract class BaseListAdapter<M : IModelType> :
 
     override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
         ivdManager.clear()
-        items.clear()
         super.onDetachedFromRecyclerView(recyclerView)
     }
 
@@ -78,14 +76,14 @@ abstract class BaseListAdapter<M : IModelType> :
     /**
      * 获取数据。
      */
-    fun getData(): MutableList<M> {
+    override fun getData(): MutableList<M> {
         return items
     }
 
     /**
      * 设置数据
      */
-    fun setData(list: List<M>) {
+    override fun setData(list: List<M>) {
         val multiList = multiList(list)
         items.run {
             clear()
@@ -97,7 +95,7 @@ abstract class BaseListAdapter<M : IModelType> :
     /**
      * 添加数据
      */
-    fun addData(list: List<M>) {
+    override fun addData(list: List<M>) {
         val multiList = multiList(list)
         val preSize = items.size
         items.run {
@@ -109,7 +107,7 @@ abstract class BaseListAdapter<M : IModelType> :
     /**
      * 只刷新局部数据。
      */
-    fun changeData(list: List<M>) {
+    override fun changeData(list: List<M>) {
         val multiList = multiList(list)
         for (m in multiList) {
             if (m in items) {
@@ -122,7 +120,7 @@ abstract class BaseListAdapter<M : IModelType> :
     /**
      * 只移除局部数据。
      */
-    fun removeData(list: List<M>) {
+    override fun removeData(list: List<M>) {
         val multiList = multiList(list)
         for (m in multiList) {
             if (m in items) {
@@ -133,40 +131,10 @@ abstract class BaseListAdapter<M : IModelType> :
         }
     }
 
-
-    /**
-     * 设置数据
-     */
-    fun setData(vararg ms: M) {
-        setData(ms.toList())
-    }
-
-    /**
-     * 添加数据
-     */
-    fun addData(vararg ms: M) {
-        addData(ms.toList())
-    }
-
-    /**
-     * 只刷新局部数据。
-     */
-    fun changeData(vararg ms: M) {
-        changeData(ms.toList())
-    }
-
-
-    /**
-     * 只移除局部数据。
-     */
-    fun removeData(vararg ms: M) {
-        removeData(ms.toList())
-    }
-
     /**
      * 清空数据
      */
-    fun clearData() {
+    override fun clearData() {
         items.clear()
     }
 

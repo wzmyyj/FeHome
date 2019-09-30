@@ -1,5 +1,7 @@
 package top.wzmyyj.common.base
 
+import top.wzmyyj.base.activity.BaseActivity
+
 /**
  * Created on 2019/09/29.
  *
@@ -7,5 +9,6 @@ package top.wzmyyj.common.base
  * @version 1.0
  * @since 1.0
  */
-class BaseActivity  {
+open class CBaseActivity : BaseActivity() {
+
 }

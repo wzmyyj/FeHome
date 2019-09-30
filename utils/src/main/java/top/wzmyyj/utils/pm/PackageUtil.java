@@ -3,6 +3,7 @@ package top.wzmyyj.utils.pm;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -19,16 +20,17 @@ import java.util.List;
  */
 public class PackageUtil {
 
-    private PackageUtil(){
-        throw new RuntimeException("No PackageUtil instances for you!");
-    }
+    private static final String TAG = PackageUtil.class.getSimpleName();
 
-    private static final String tag = PackageUtil.class.getSimpleName();
+
+    private PackageUtil() {
+        throw new UnsupportedOperationException(TAG + "you can't instantiate me.");
+    }
 
     /**
      * for debug.
      */
-    public static boolean debug = false;
+    public static boolean DEBUG = false;
 
     /**
      * 获取应用版本号名称。
@@ -50,7 +52,14 @@ public class PackageUtil {
      */
     public static long getVersionCode(@NonNull Context context) {
         PackageInfo info = getPackageInfo(context);
-        return info == null ? 0L : info.getLongVersionCode();
+        if (info != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                return info.getLongVersionCode();
+            } else {
+                return info.versionCode;
+            }
+        }
+        return 0L;
     }
 
 
@@ -78,8 +87,8 @@ public class PackageUtil {
         try {
             return pManager.getPackageInfo(context.getPackageName(), 0);
         } catch (PackageManager.NameNotFoundException e) {
-            if (debug) {
-                Log.d(tag, "method getPackageInfo has exception");
+            if (DEBUG) {
+                Log.d(TAG, "method getPackageInfo has exception");
                 e.printStackTrace();
             }
         }
@@ -100,14 +109,14 @@ public class PackageUtil {
         for (int i = 0; i < packageInfoList.size(); ++i) {
             String pn = packageInfoList.get(i).packageName;
             if (pn.equals(packageName)) {
-                if (debug) {
-                    Log.d(tag, packageName + "is exist");
+                if (DEBUG) {
+                    Log.d(TAG, packageName + "is exist");
                 }
                 return true;
             }
         }
-        if (debug) {
-            Log.d(tag, packageName + "is not exist");
+        if (DEBUG) {
+            Log.d(TAG, packageName + "is not exist");
         }
         return false;
     }

@@ -13,9 +13,9 @@ import androidx.lifecycle.DefaultLifecycleObserver;
  * @version 1.0
  * @since 1.0
  */
-public class FeViewModel extends AndroidViewModel implements DefaultLifecycleObserver {
+public class BaseViewModel extends AndroidViewModel implements DefaultLifecycleObserver {
 
-    public FeViewModel(@NonNull Application application) {
+    public BaseViewModel(@NonNull Application application) {
         super(application);
     }
 }

@@ -28,6 +28,9 @@ ext {
             androidx_lifecycle_java8 : "android.arch.lifecycle:common-java8:${version.androidx}",
             androidx_recyclerview    : "androidx.recyclerview:recyclerview:1.1.0-beta03",
 
+            //google
+            tablayout                : "com.android.support:design:27.1.0",
+
 
             //test
             junit                    : "junit:junit:4.12",
