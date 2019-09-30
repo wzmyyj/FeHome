@@ -15,7 +15,7 @@ import top.wzmyyj.kit.R;
  * @since 1.0
  */
 public class FragmentTabWrapper {
-    private List<Fragment> mFragmentList = new ArrayList<>();
+
     private List<FT> fts = new ArrayList<>();
 
     public List<FT> getFTs() {

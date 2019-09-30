@@ -34,6 +34,8 @@ import top.wzmyyj.kit.weight.SlideViewPager;
  */
 public abstract class PagerTabFragmentHelper {
 
+    private static final int MAX_SIZE = 6;
+
     private List<Fragment> mFragmentList = new ArrayList<>();
     private TabLayout mTabLayout;
     private SlideViewPager mViewPager;
@@ -76,7 +78,7 @@ public abstract class PagerTabFragmentHelper {
         mFragmentList.clear();
         for (FragmentTabWrapper.FT ft : wrapper.getFTs()) {
             mFragmentList.add(ft.fragment);
-            if (++i >= 6) break;
+            if (++i >= MAX_SIZE) break;
         }
         mAdapter.notifyDataSetChanged();
         setTabStyle();
