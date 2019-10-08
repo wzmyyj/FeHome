@@ -4,7 +4,6 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.DefaultLifecycleObserver;
 
 /**
  * Created on 2019/09/29.
@@ -13,7 +12,7 @@ import androidx.lifecycle.DefaultLifecycleObserver;
  * @version 1.0
  * @since 1.0
  */
-public class BaseViewModel extends AndroidViewModel implements DefaultLifecycleObserver {
+public class BaseViewModel extends AndroidViewModel {
 
     public BaseViewModel(@NonNull Application application) {
         super(application);

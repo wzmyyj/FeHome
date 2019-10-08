@@ -1,12 +1,14 @@
 package top.wzmyyj.kit.helper;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,7 +47,7 @@ public abstract class PagerTabFragmentHelper {
 
     @NonNull
     public View getView(@NonNull Context context, @NonNull FragmentManager fragmentManager) {
-        View v = LayoutInflater.from(context).inflate(R.layout.activity_pager_fragment, null);
+        View v = LayoutInflater.from(context).inflate(R.layout.layout_pager_fragment, null);
         mViewPager = v.findViewById(R.id.viewPager);
         mTabLayout = v.findViewById(R.id.tabLayout);
         FragmentPagerAdapter mAdapter = new FragmentPagerAdapter(fragmentManager) {
@@ -70,6 +72,7 @@ public abstract class PagerTabFragmentHelper {
         mTabLayout.setupWithViewPager(mViewPager);
 
         initFTs(wrapper);
+        fixFTs(v.getResources());
 
         if (wrapper.getFTs().size() == 0) {
             return v;
@@ -105,10 +108,37 @@ public abstract class PagerTabFragmentHelper {
         return v;
     }
 
+
+    private void fixFTs(@NonNull Resources resources) {
+        for (FragmentTabWrapper.FT ft : wrapper.getFTs()) {
+            if (ft.isFtUseRes) {
+                ft.title = resources.getString(ft.titleRes);
+                ft.icon_selected = resources.getDrawable(ft.iconRes_selected, getTheme());
+                ft.icon_unselected = resources.getDrawable(ft.iconRes_unselected, getTheme());
+            }
+        }
+
+        if (wrapper.isColorUseRes) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                wrapper.color_selected = resources.getColor(wrapper.colorRes_selected, getTheme());
+                wrapper.color_unselected = resources.getColor(wrapper.colorRes_unselected, getTheme());
+            } else {
+                wrapper.color_selected = resources.getColor(wrapper.colorRes_selected);
+                wrapper.color_unselected = resources.getColor(wrapper.colorRes_unselected);
+            }
+        }
+
+    }
+
+    @Nullable
+    protected Resources.Theme getTheme() {
+        return null;
+    }
+
     /**
      * @param wrapper wrapper of FT.
      */
-    protected abstract void initFTs(FragmentTabWrapper wrapper);
+    protected abstract void initFTs(@NonNull FragmentTabWrapper wrapper);
 
     @Nullable
     public TabLayout getTabLayout() {
@@ -164,15 +194,27 @@ public abstract class PagerTabFragmentHelper {
 
     @NonNull
     protected TabStyle getTabStyle() {
-        return new TabStyle();
+        return new DefaultTabStyle();
     }
 
-    public class TabStyle {
 
-        protected final SparseArray<ImageView> imgs = new SparseArray<>();
-        protected final SparseArray<TextView> txts = new SparseArray<>();
+    public interface TabStyle {
+        void setCustomView(@NonNull TabLayout.Tab tab);
 
-        protected void setCustomView(@NonNull TabLayout.Tab tab) {
+        void setTabSelected(@NonNull TabLayout.Tab tab);
+
+        void setTabUnselected(@NonNull TabLayout.Tab tab);
+
+        void setTabReselected(@NonNull TabLayout.Tab tab);
+    }
+
+    public class DefaultTabStyle implements TabStyle {
+
+        private final SparseArray<ImageView> imgs = new SparseArray<>();
+        private final SparseArray<TextView> txts = new SparseArray<>();
+
+        @Override
+        public void setCustomView(@NonNull TabLayout.Tab tab) {
             int p = tab.getPosition();
             View customView = tab.setCustomView(R.layout.layout_tab).getCustomView();
             if (customView == null) return;
@@ -183,30 +225,22 @@ public abstract class PagerTabFragmentHelper {
             txts.put(p, tv_tab);
         }
 
-        protected void setTabSelected(@NonNull TabLayout.Tab tab) {
+        @Override
+        public void setTabSelected(@NonNull TabLayout.Tab tab) {
             int p = tab.getPosition();
-            setImageResource(imgs.get(p), wrapper.getFTs().get(p).icon_selected);
-            setTextColor(txts.get(p), wrapper.text_color_selected);
+            imgs.get(p).setImageDrawable(wrapper.getFTs().get(p).icon_selected);
+            txts.get(p).setTextColor(wrapper.color_selected);
         }
 
-        protected void setTabUnselected(@NonNull TabLayout.Tab tab) {
+        @Override
+        public void setTabUnselected(@NonNull TabLayout.Tab tab) {
             int p = tab.getPosition();
-            setImageResource(imgs.get(p), wrapper.getFTs().get(p).icon_unselected);
-            setTextColor(txts.get(p), wrapper.text_color_unselected);
+            imgs.get(p).setImageDrawable(wrapper.getFTs().get(p).icon_unselected);
+            txts.get(p).setTextColor(wrapper.color_unselected);
         }
 
-        protected void setTabReselected(@NonNull TabLayout.Tab tab) {
-
-        }
-
-        @SuppressLint("NewApi")
-        private void setTextColor(@NonNull TextView textView, int colorRes) {
-            int color = textView.getContext().getResources().getColor(colorRes, null);
-            textView.setTextColor(color);
-        }
-
-        private void setImageResource(@NonNull ImageView imageView, int imageRes) {
-            imageView.setImageResource(imageRes);
+        @Override
+        public void setTabReselected(@NonNull TabLayout.Tab tab) {
 
         }
     }

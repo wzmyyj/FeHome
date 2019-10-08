@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ArcMenu">
+        <attr name="am_position" format="enum">
+            <enum name="left_top" value="0" />
+            <enum name="left_bottom" value="1" />
+            <enum name="right_top" value="2" />
+            <enum name="right_bottom" value="3" />
+        </attr>
+        <attr name="am_radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+    </declare-styleable>
+
+
+    <declare-styleable name="RoundAngleImageView">
+        <!-- 描边宽度-->
+        <attr name="riv_border_width" format="dimension" />
+        <!-- 描边颜色-->
+        <attr name="riv_border_color" format="color" />
+        <!--圆角大小-->
+        <attr name="riv_radius" format="dimension" />
+        <!--左上圆角大小-->
+        <attr name="riv_leftTop_radius" format="dimension" />
+        <!--右上圆角大小-->
+        <attr name="riv_rightTop_radius" format="dimension" />
+        <!--左下圆角大小-->
+        <attr name="riv_leftBottom_radius" format="dimension" />
+        <!--右下圆角大小-->
+        <attr name="riv_rightBottom_radius" format="dimension" />
+    </declare-styleable>
+
+
+    <declare-styleable name="RoundFrameLayout">
+        <!-- 描边宽度-->
+        <attr name="rfl_border_width" format="dimension" />
+        <!-- 描边颜色-->
+        <attr name="rfl_border_color" format="color" />
+        <!--圆角大小-->
+        <attr name="rfl_radius" format="dimension" />
+        <!--左上圆角大小-->
+        <attr name="rfl_leftTop_radius" format="dimension" />
+        <!--右上圆角大小-->
+        <attr name="rfl_rightTop_radius" format="dimension" />
+        <!--左下圆角大小-->
+        <attr name="rfl_leftBottom_radius" format="dimension" />
+        <!--右下圆角大小-->
+        <attr name="rfl_rightBottom_radius" format="dimension" />
+    </declare-styleable>
+
+
+    <declare-styleable name="SlideViewPager">
+        <attr name="svp_isSlide" format="boolean" />
+    </declare-styleable>
+
+</resources>

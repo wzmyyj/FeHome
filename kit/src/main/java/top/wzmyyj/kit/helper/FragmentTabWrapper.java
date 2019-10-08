@@ -1,11 +1,16 @@
 package top.wzmyyj.kit.helper;
 
+import android.graphics.drawable.Drawable;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import top.wzmyyj.kit.R;
 
 /**
  * Created on 2019/09/30.
@@ -18,44 +23,93 @@ public class FragmentTabWrapper {
 
     private List<FT> fts = new ArrayList<>();
 
-    public List<FT> getFTs() {
+    List<FT> getFTs() {
         return fts;
     }
 
-    public void clear() {
+    void clear() {
         fts.clear();
     }
 
 
-    public void add(Fragment fragment, String title, int icon_selected, int icon_unselected) {
-        fts.add(new FT(fragment, title, icon_selected, icon_unselected));
+    public void add(
+            @NonNull Fragment fragment,
+            @NonNull String title,
+            @NonNull Drawable icon_unselected,
+            @NonNull Drawable icon_selected
+    ) {
+        FT ft = new FT();
+        ft.fragment = fragment;
+        ft.title = title;
+        ft.icon_unselected = icon_unselected;
+        ft.icon_selected = icon_selected;
+        fts.add(ft);
+        ft.isFtUseRes = false;
+    }
+
+    public void add(
+            @NonNull Fragment fragment,
+            @StringRes int titleRes,
+            @DrawableRes int iconRes_unselected,
+            @DrawableRes int iconRes_selected
+    ) {
+        FT ft = new FT();
+        ft.fragment = fragment;
+        ft.titleRes = titleRes;
+        ft.iconRes_unselected = iconRes_unselected;
+        ft.iconRes_selected = iconRes_selected;
+        fts.add(ft);
+        ft.isFtUseRes = true;
     }
 
 
     class FT {
+        boolean isFtUseRes = false;
         Fragment fragment;
         String title;
-        int icon_selected;// 选中的。
-        int icon_unselected;// 未选中的。
-
-        FT(Fragment fragment, String str, int icon_selected, int icon_unselected) {
-            this.fragment = fragment;
-            this.title = str;
-            this.icon_selected = icon_selected;
-            this.icon_unselected = icon_unselected;
-        }
+        Drawable icon_selected;// 选中的。
+        Drawable icon_unselected;// 未选中的。
+        @StringRes
+        int titleRes;
+        @DrawableRes
+        int iconRes_selected;// 选中的。
+        @DrawableRes
+        int iconRes_unselected;// 未选中的。
     }
 
 
-    int text_color_selected = R.color.colorGray_6;
-    int text_color_unselected = R.color.colorGray_b;
+    @ColorInt
+    int color_selected = 0xff666666;
+    @ColorInt
+    int color_unselected = 0xffbbbbbb;
+    @ColorRes
+    int colorRes_selected = 0;
+    @ColorRes
+    int colorRes_unselected = 0;
+
+    boolean isColorUseRes = false;
 
 
-    public void setColorRes(int color_selected, int color_unselected) {
-        text_color_selected = color_selected;
-        text_color_unselected = color_unselected;
+    public void setColor(
+            @ColorInt int color_unselected,
+            @ColorInt int color_selected
+    ) {
+        this.color_unselected = color_unselected;
+        this.color_selected = color_selected;
+        this.isColorUseRes = false;
 
     }
+
+    public void setColorRes(
+            @ColorRes int colorRes_unselected,
+            @ColorRes int colorRes_selected
+    ) {
+        this.colorRes_unselected = colorRes_unselected;
+        this.colorRes_selected = colorRes_selected;
+        this.isColorUseRes = true;
+
+    }
+
 
     int firstWhich = 0;
 

@@ -8,6 +8,11 @@ ext {
     ]
 
 
+    runAlone = [
+            main: false
+    ]
+
+
     def version = [
             androidx                : "1.1.0",
             retrofit                : "2.4.0",

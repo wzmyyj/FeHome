@@ -52,7 +52,8 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies.test_espresso
 
 
-    api project(':main')
-
-
+    if (!rootProject.ext.runAlone.main.toBoolean()) {
+        api project(':main')
+    }
+    api project(':common')
 }

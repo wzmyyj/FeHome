@@ -33,7 +33,6 @@ dependencies {
     implementation rootProject.ext.dependencies.androidx_appcompat
     implementation rootProject.ext.dependencies.androidx_core
     implementation rootProject.ext.dependencies.androidx_constraintlayout
-    implementation rootProject.ext.dependencies.androidx_lifecycle_java8
 
 
     testImplementation rootProject.ext.dependencies.junit

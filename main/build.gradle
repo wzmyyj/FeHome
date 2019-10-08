@@ -1,9 +1,19 @@
-apply plugin: 'com.android.library'
+def runAlone = rootProject.ext.runAlone.main.toBoolean()
+
+if (runAlone) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+
+    // 所有xml资源命名以 "live_" 开头、否则编译报红
+    resourcePrefix "main_"
 
     ext.VersionName = "1.0"
 
@@ -11,6 +21,10 @@ android {
     buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
         // applicationId ApplicationId
+        if (runAlone) {
+            // 单独调试时添加 applicationId ，集成调试时移除
+            applicationId "top.wzmyyj.main"
+        }
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode getCodeFromName(VersionName)
@@ -35,6 +49,20 @@ android {
 
     dataBinding {
         enabled = true
+    }
+
+    sourceSets {
+        main {
+            // 单独调试与集成调试时使用不同的 AndroidManifest.xml 文件
+            if (runAlone) {
+                manifest.srcFile 'src/main/runalone/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    exclude 'src/main/runalone/*'
+                }
+            }
+        }
     }
 
 }
