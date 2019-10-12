@@ -1,2 +1,11 @@
-include ':app', ':base', ':common', ':main', ':utils', ':adapter', ':kit'
-rootProject.name='FeHome'
+include ':app',
+        ':lib_base',
+        ':lib_utils',
+        ':lib_adapter',
+        ':lib_kit',
+        ':common',
+        ':app_main',
+        ':app_main_home',
+        ':app_main_active'
+
+rootProject.name = 'FeHome'

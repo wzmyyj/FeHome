@@ -9,6 +9,4 @@ import top.wzmyyj.base.activity.BaseActivity
  * @version 1.0
  * @since 1.0
  */
-open class CBaseActivity : BaseActivity() {
-
-}
+open class CBaseActivity : BaseActivity()

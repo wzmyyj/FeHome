@@ -9,7 +9,11 @@ ext {
 
 
     runAlone = [
-            main: false
+            main        : false,
+            main_home   : false,
+            main_active : false,
+            main_message: false,
+            main_mine   : false
     ]
 
 

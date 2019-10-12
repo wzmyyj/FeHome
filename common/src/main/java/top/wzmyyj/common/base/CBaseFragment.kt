@@ -9,5 +9,4 @@ import top.wzmyyj.base.fragment.BaseFragment
  * @version 1.0
  * @since 1.0
  */
-open class CBaseFragment : BaseFragment() {
-}
+open class CBaseFragment : BaseFragment()
