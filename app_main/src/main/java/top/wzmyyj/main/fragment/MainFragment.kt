@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import top.wzmyyj.common.base.CBaseFragment
-import top.wzmyyj.kit.helper.FragmentTabWrapper
-import top.wzmyyj.kit.helper.PagerTabFragmentHelper
+import top.wzmyyj.kit.helper.PagerTabManager
+import top.wzmyyj.kit.helper.PagerTabHelper
 import top.wzmyyj.main.R
 
 /**
@@ -16,44 +16,42 @@ import top.wzmyyj.main.R
  * @version 1.0
  * @since 1.0
  */
+@Suppress("DEPRECATION")
 class MainFragment : CBaseFragment() {
 
     companion object {
         fun newInstance() = MainFragment()
     }
 
-    private val helper: PagerTabFragmentHelper by lazy {
-        object : PagerTabFragmentHelper() {
-            override fun initFTs(wrapper: FragmentTabWrapper) {
-                wrapper.add(
+    private val helper: PagerTabHelper by lazy {
+        object : PagerTabHelper() {
+            override fun init(manager: PagerTabManager) {
+                manager.add(
                     MainHomeFragment.newInstance(),
-                    R.string.main_home,
-                    R.drawable.main_ic_home_0,
-                    R.drawable.main_ic_home_1
+                    resources.getString(R.string.main_home),
+                    resources.getDrawable(R.drawable.main_selector_home)
                 )
 
-                wrapper.add(
+                manager.add(
                     MainActiveFragment.newInstance(),
-                    R.string.main_active,
-                    R.drawable.main_ic_active_0,
-                    R.drawable.main_ic_active_1
+                    resources.getString(R.string.main_active),
+                    resources.getDrawable(R.drawable.main_selector_active)
                 )
 
-                wrapper.add(
+                manager.add(
                     MainMessageFragment.newInstance(),
-                    R.string.main_message,
-                    R.drawable.main_ic_message_0,
-                    R.drawable.main_ic_message_1
+                    resources.getString(R.string.main_message),
+                    resources.getDrawable(R.drawable.main_selector_message)
                 )
 
-                wrapper.add(
+                manager.add(
                     MainMineFragment.newInstance(),
-                    R.string.main_mine,
-                    R.drawable.main_ic_mine_0,
-                    R.drawable.main_ic_mine_1
+                    resources.getString(R.string.main_mine),
+                    resources.getDrawable(R.drawable.main_selector_mine)
                 )
 
-                wrapper.setColorRes(R.color.colorGray_6, R.color.colorPrimary)
+                manager.setSelectColor(resources.getColor(R.color.colorPrimary))
+                manager.setUnSelectColor(resources.getColor(R.color.colorGray_9))
 
             }
 
@@ -65,6 +63,6 @@ class MainFragment : CBaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return helper.getView(requireContext(), childFragmentManager)
+        return helper.getView(requireContext(), childFragmentManager, container)
     }
 }

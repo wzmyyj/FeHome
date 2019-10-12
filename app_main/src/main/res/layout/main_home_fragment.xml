@@ -17,11 +17,12 @@
             android:text="@string/main_home" />
 
         <TextView
-            android:layout_marginStart="40dp"
             binding_marginTop="@{@dimen/main_px_100}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
             android:text="100px"
+            tools:ignore="HardcodedText,PxUsage"
             tools:layout_marginTop="@dimen/main_px_100" />
 
 
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
             android:text="100dp"
+            tools:ignore="HardcodedText"
             tools:layout_marginTop="@dimen/main_dp_100" />
 
         <TextView
@@ -39,14 +41,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="200dp"
             android:text="100pt"
+            tools:ignore="HardcodedText"
             tools:layout_marginTop="@dimen/main_pt_100" />
 
 
         <ImageView
             android:layout_width="100dp"
-            android:layout_marginBottom="60dp"
             android:layout_height="100dp"
             android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="60dp"
             android:background="#000000"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_avatar" />
