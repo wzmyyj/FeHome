@@ -12,10 +12,13 @@
             <option value="$PROJECT_DIR$/app_main" />
             <option value="$PROJECT_DIR$/app_main_active" />
             <option value="$PROJECT_DIR$/app_main_home" />
+            <option value="$PROJECT_DIR$/app_main_message" />
+            <option value="$PROJECT_DIR$/app_main_mine" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/lib_adapter" />
             <option value="$PROJECT_DIR$/lib_base" />
             <option value="$PROJECT_DIR$/lib_kit" />
+            <option value="$PROJECT_DIR$/lib_time" />
             <option value="$PROJECT_DIR$/lib_utils" />
           </set>
         </option>

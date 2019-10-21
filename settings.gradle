@@ -1,4 +1,4 @@
-include ':app',
+include ':app', ':lib_time', ':app_main_message', ':app_main_mine',
         ':lib_base',
         ':lib_utils',
         ':lib_adapter',
