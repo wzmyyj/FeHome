@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
  * Created on 2019/08/22.
  *
  * @author feling
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 abstract class BaseListAdapter<M : IModelType> :
     RecyclerView.Adapter<BaseListAdapter.BindingViewHolder>(), IMutableListData<M> {

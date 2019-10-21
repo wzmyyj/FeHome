@@ -4,8 +4,8 @@ package top.wzmyyj.adapter.base
  * Created on 2019/08/22.
  *
  * @author feling
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 interface IModelType {
     /**

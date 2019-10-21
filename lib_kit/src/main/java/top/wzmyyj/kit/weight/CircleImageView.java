@@ -21,13 +21,14 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import top.wzmyyj.kit.R;
 
-
 /**
- * Created by wzm on 2018/04/23.
+ * Created on 2018/4/23.
  *
- * 圆形的ImageView。
+ * 圆形的ImageView.
  *
- * @author wzmyyj email: 2209011667@qq.com
+ * @author feling
+ * @version 1.0.0
+ * @since 1.0.0
  */
 
 @SuppressLint("AppCompatCustomView")

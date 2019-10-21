@@ -13,11 +13,13 @@ import androidx.viewpager.widget.ViewPager;
 import top.wzmyyj.kit.R;
 
 /**
- * Created by feling on 2018/12/28.
- * <p>
+ * Created on 2018/12/28.
+ *
  * 可以控制是否可滑动的ViewPager。
  *
- * @author wzmyyj email: 2209011667@qq.com
+ * @author feling
+ * @version 1.0.0
+ * @since 1.0.0
  */
 
 public class SlideViewPager extends ViewPager {

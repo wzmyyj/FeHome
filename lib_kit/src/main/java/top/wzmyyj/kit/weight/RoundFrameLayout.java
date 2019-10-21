@@ -16,8 +16,8 @@ import top.wzmyyj.kit.R;
  * Created on 2019/08/15.
  *
  * @author feling
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 public class RoundFrameLayout extends FrameLayout {
     float width, height;

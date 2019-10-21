@@ -4,19 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import top.wzmyyj.common.base.CBaseFragment
 import top.wzmyyj.kit.helper.PagerTabManager
 import top.wzmyyj.kit.helper.PagerTabHelper
 import top.wzmyyj.main.R
 
+
 /**
  * Created on 2019/09/30.
  *
  * @author feling
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
-@Suppress("DEPRECATION")
 class MainFragment : CBaseFragment() {
 
     companion object {
@@ -50,8 +51,8 @@ class MainFragment : CBaseFragment() {
                     resources.getDrawable(R.drawable.main_selector_mine)
                 )
 
-                manager.setSelectColor(resources.getColor(R.color.colorPrimary))
-                manager.setUnSelectColor(resources.getColor(R.color.colorGray_9))
+                manager.setSelectColor(ContextCompat.getColor(requireContext(),R.color.colorPrimary))
+                manager.setUnSelectColor(ContextCompat.getColor(requireContext(),R.color.colorGray_9))
 
             }
 

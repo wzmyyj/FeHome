@@ -11,8 +11,8 @@ import androidx.fragment.app.FragmentTransaction;
  * Created on 2019/09/30.
  *
  * @author feling
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 public class FragmentUtil {
 

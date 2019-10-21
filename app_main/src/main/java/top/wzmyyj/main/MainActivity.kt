@@ -5,6 +5,13 @@ import top.wzmyyj.common.base.CBaseActivity
 import top.wzmyyj.common.base.replaceFragment
 import top.wzmyyj.main.fragment.MainFragment
 
+/**
+ * Created on 2019/09/30.
+ *
+ * @author feling
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 class MainActivity : CBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -20,11 +20,13 @@ import top.wzmyyj.kit.R;
 
 
 /**
- * Created by yyj on 2017/10/23.
+ * Created on 2017/10/23.
  *
  * 卫星菜单控件。
  *
- * @author wzmyyj email: 2209011667@qq.com
+ * @author feling
+ * @version 1.0.0
+ * @since 1.0.0
  */
 
 public class ArcMenu extends ViewGroup implements OnClickListener {

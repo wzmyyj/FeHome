@@ -12,13 +12,14 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import top.wzmyyj.kit.R;
 
-
 /**
- * Created by yyj on 2018/12/07.
- * <p>
+ * Created on 2018/12/07.
+ *
  * 有圆角的ImageView。
  *
- * @author wzmyyj email: 2209011667@qq.com
+ * @author feling
+ * @version 1.0.0
+ * @since 1.0.0
  */
 
 public class RoundAngleImageView extends AppCompatImageView {

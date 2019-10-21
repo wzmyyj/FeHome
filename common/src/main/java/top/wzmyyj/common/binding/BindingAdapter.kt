@@ -10,8 +10,8 @@ import androidx.databinding.BindingAdapter
  * Created on 2019/08/28.
  *
  * @author feling
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 @BindingAdapter("binding_marginTop")
 fun View.setMarginTop(marginTop: Float) {

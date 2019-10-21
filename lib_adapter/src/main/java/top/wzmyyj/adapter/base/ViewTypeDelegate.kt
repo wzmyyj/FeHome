@@ -7,8 +7,8 @@ import androidx.databinding.ViewDataBinding
  * 同一种ViewType的每个Item对View的处理委托（接口）。一中viewType一个对象即可。
  *
  * @author feling
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 interface ViewTypeDelegate<DB : ViewDataBinding, M : IModelType> {
 

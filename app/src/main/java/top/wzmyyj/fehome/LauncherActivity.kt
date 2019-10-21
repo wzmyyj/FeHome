@@ -5,6 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import top.wzmyyj.main.MainActivity
 
+/**
+ * Created on 2019/09/30.
+ *
+ * @author feling
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 class LauncherActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

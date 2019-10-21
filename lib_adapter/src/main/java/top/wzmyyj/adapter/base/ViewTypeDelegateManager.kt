@@ -8,8 +8,8 @@ import androidx.databinding.ViewDataBinding
  * ViewTypeDelegate 的统一管理类。
  *
  * @author feling
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 class ViewTypeDelegateManager<M : IModelType> {
 
