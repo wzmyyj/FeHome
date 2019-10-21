@@ -1,6 +1,7 @@
 package top.wzmyyj.main.fragment
 
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,5 +31,10 @@ class MainMessageFragment : CBaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.countDown.setEndTime(System.currentTimeMillis() + 10 * 60 * 1000L)
     }
 }

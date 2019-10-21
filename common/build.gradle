@@ -57,6 +57,8 @@ dependencies {
     api project(':lib_utils')
     api project(':lib_adapter')
     api project(':lib_kit')
+    api project(':lib_time')
+
 
 
 }
