@@ -17,11 +17,11 @@ public class CountDownTextView extends AppCompatTextView {
     private String formatString = "HH:mm:ss";
 
     public CountDownTextView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public CountDownTextView(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public CountDownTextView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -55,7 +55,8 @@ public class CountDownTextView extends AppCompatTextView {
         });
 
         countDownTimer.setOnCountdownEndListener(() -> {
-            CountDownTextView.this.setText("00:00:00");
+            String s = "00:00:00";
+            CountDownTextView.this.setText(s);
         });
     }
 
