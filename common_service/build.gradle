@@ -7,7 +7,7 @@ android {
 
     ext.VersionName = "1.0.0"
 
-    resourcePrefix "common_"
+    resourcePrefix "common_service_"
 
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -53,10 +53,7 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies.test_runner
     androidTestImplementation rootProject.ext.dependencies.test_espresso
 
-    api project(':lib_base')
-    api project(':lib_utils')
-    api project(':lib_adapter')
-    api project(':lib_kit')
-    api project(':lib_time')
+    api rootProject.ext.dependencies.arouter_api
+    kapt rootProject.ext.dependencies.arouter_compiler
 
 }

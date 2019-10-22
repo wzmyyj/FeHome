@@ -33,11 +33,11 @@ class MainFragment : CBaseFragment() {
                     resources.getDrawable(R.drawable.main_selector_home)
                 )
 
-                manager.add(
-                    MainActiveFragment.newInstance(),
-                    resources.getString(R.string.main_active),
-                    resources.getDrawable(R.drawable.main_selector_active)
-                )
+//                manager.add(
+//                    top.wzmyyj.main_active.ui.MainActiveFragment.newInstance(),
+//                    resources.getString(R.string.main_active),
+//                    resources.getDrawable(R.drawable.main_selector_active)
+//                )
 
                 manager.add(
                     MainMessageFragment.newInstance(),

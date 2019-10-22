@@ -73,6 +73,10 @@ ext {
 
 
             multidex                 : "com.android.support:multidex:1.0.3",
+
+            //ARouter
+            arouter_api              : "com.alibaba:arouter-api:1.4.1",
+            arouter_compiler         : "com.alibaba:arouter-compiler:1.2.2"
     ]
 }
 

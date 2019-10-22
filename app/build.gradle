@@ -7,6 +7,8 @@ android {
 
     ext.VersionName = "1.0.0"
 
+    resourcePrefix "app_"
+
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
@@ -21,6 +23,13 @@ android {
 
         multiDexEnabled true
     }
+
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -65,4 +74,6 @@ dependencies {
         api project(':app_main')
     }
     api project(':common')
+    api project(':common_service')
+
 }

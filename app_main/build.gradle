@@ -12,16 +12,14 @@ apply plugin: 'kotlin-kapt'
 
 android {
 
-    resourcePrefix "main_"
-
     ext.VersionName = "1.0.0"
+
+    resourcePrefix "main_"
 
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
-        // applicationId ApplicationId
         if (runAlone) {
-            // 单独调试时添加 applicationId ，集成调试时移除
             applicationId "top.wzmyyj.main"
         }
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -32,6 +30,12 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
 
         multiDexEnabled true
+    }
+
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
     }
 
     buildTypes {
@@ -89,5 +93,6 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies.test_espresso
 
     api project(':common')
+    api project(':common_service')
 
 }

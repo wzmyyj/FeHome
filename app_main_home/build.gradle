@@ -1,19 +1,41 @@
-apply plugin: 'com.android.library'
+def runAlone = rootProject.ext.runAlone.main_home.toBoolean()
+
+if (runAlone) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.0"
 
+    ext.VersionName = "1.0.0"
 
+    resourcePrefix "main_home_"
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
+        if (runAlone) {
+            applicationId "top.wzmyyj.main_home"
+        }
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode getCodeFromName(VersionName)
+        versionName VersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+
+        multiDexEnabled true
+    }
+
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
     }
 
     buildTypes {
@@ -21,6 +43,40 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    sourceSets {
+        main {
+            // 单独调试与集成调试时使用不同的 AndroidManifest.xml 文件
+            if (runAlone) {
+                manifest.srcFile 'src/main/runalone/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    exclude 'src/main/runalone/*'
+                }
+            }
+        }
+    }
+
+    flavorDimensions "channel"
+
+    productFlavors {
+        // 日常测试
+        daily {}
+        // 灰度
+        gray {}
+        // 官方渠道
+        official {}
     }
 
 }
@@ -35,4 +91,8 @@ dependencies {
     testImplementation rootProject.ext.dependencies.junit
     androidTestImplementation rootProject.ext.dependencies.test_runner
     androidTestImplementation rootProject.ext.dependencies.test_espresso
+
+    api project(':common')
+    api project(':common_service')
+
 }
