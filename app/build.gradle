@@ -69,9 +69,24 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies.test_runner
     androidTestImplementation rootProject.ext.dependencies.test_espresso
 
+    implementation rootProject.ext.dependencies.arouter_api
+    kapt rootProject.ext.dependencies.arouter_compiler
+
 
     if (!rootProject.ext.runAlone.main.toBoolean()) {
         api project(':app_main')
+    }
+    if (!rootProject.ext.runAlone.main_home.toBoolean()) {
+        api project(':app_main_home')
+    }
+    if (!rootProject.ext.runAlone.main_active.toBoolean()) {
+        api project(':app_main_active')
+    }
+    if (!rootProject.ext.runAlone.main_message.toBoolean()) {
+        api project(':app_main_message')
+    }
+    if (!rootProject.ext.runAlone.main_mine.toBoolean()) {
+        api project(':app_main_mine')
     }
     api project(':common')
     api project(':common_service')

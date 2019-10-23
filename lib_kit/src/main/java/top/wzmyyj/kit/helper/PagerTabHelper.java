@@ -21,6 +21,8 @@ import org.jetbrains.annotations.NotNull;
 import top.wzmyyj.kit.R;
 import top.wzmyyj.kit.weight.SlideViewPager;
 
+import static androidx.fragment.app.FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
+
 /**
  * Created on 2019/09/30.
  *
@@ -52,7 +54,7 @@ public abstract class PagerTabHelper {
         }
 
 
-        FragmentPagerAdapter mAdapter = new FragmentPagerAdapter(fragmentManager) {
+        FragmentPagerAdapter mAdapter = new FragmentPagerAdapter(fragmentManager,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
             @Override
             public int getCount() {

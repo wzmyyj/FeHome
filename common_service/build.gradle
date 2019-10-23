@@ -21,6 +21,13 @@ android {
 
         multiDexEnabled true
     }
+
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -53,7 +60,7 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies.test_runner
     androidTestImplementation rootProject.ext.dependencies.test_espresso
 
-    api rootProject.ext.dependencies.arouter_api
+    implementation rootProject.ext.dependencies.arouter_api
     kapt rootProject.ext.dependencies.arouter_compiler
 
 }

@@ -16,9 +16,9 @@ import androidx.annotation.StringDef
 annotation class ServiceName {
     companion object {
 
-        const val SERVICE_MAIN_HOME = "/service/main_home"
+        const val SERVICE_MAIN_HOME = "/app_main_home/service"
 
-        const val SERVICE_MAIN_ACTIVE = "/service/main_active"
+        const val SERVICE_MAIN_ACTIVE = "/app_main_active/service"
 
         fun isIn(name: String): Boolean {
             return SERVICE_MAIN_HOME == name

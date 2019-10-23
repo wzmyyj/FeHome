@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import com.alibaba.android.arouter.launcher.ARouter
 import top.wzmyyj.common.base.CBaseFragment
+import top.wzmyyj.common_service.main_active.IMainActiveService
+import top.wzmyyj.common_service.main_home.IMainHomeService
 import top.wzmyyj.kit.helper.PagerTabManager
 import top.wzmyyj.kit.helper.PagerTabHelper
 import top.wzmyyj.main.R
@@ -27,37 +30,56 @@ class MainFragment : CBaseFragment() {
     private val helper: PagerTabHelper by lazy {
         object : PagerTabHelper() {
             override fun init(manager: PagerTabManager) {
-                manager.add(
-                    MainHomeFragment.newInstance(),
-                    resources.getString(R.string.main_home),
-                    resources.getDrawable(R.drawable.main_selector_home)
-                )
-
-//                manager.add(
-//                    top.wzmyyj.main_active.ui.MainActiveFragment.newInstance(),
-//                    resources.getString(R.string.main_active),
-//                    resources.getDrawable(R.drawable.main_selector_active)
-//                )
-
-                manager.add(
-                    MainMessageFragment.newInstance(),
-                    resources.getString(R.string.main_message),
-                    resources.getDrawable(R.drawable.main_selector_message)
-                )
-
-                manager.add(
-                    MainMineFragment.newInstance(),
-                    resources.getString(R.string.main_mine),
-                    resources.getDrawable(R.drawable.main_selector_mine)
-                )
-
-                manager.setSelectColor(ContextCompat.getColor(requireContext(),R.color.colorPrimary))
-                manager.setUnSelectColor(ContextCompat.getColor(requireContext(),R.color.colorGray_9))
-
+                setPagerTabManager(manager)
             }
-
         }
     }
+
+
+    private fun setPagerTabManager(manager: PagerTabManager) {
+        manager.add(
+            getHomeFragment(),
+            getString(R.string.main_home),
+            getDrawable(R.drawable.main_selector_home)!!
+        )
+
+        manager.add(
+            getActiveFragment(),
+            getString(R.string.main_active),
+            getDrawable(R.drawable.main_selector_active)!!
+        )
+
+
+        manager.add(
+            MainMessageFragment.newInstance(),
+            getString(R.string.main_message),
+            getDrawable(R.drawable.main_selector_message)!!
+        )
+
+        manager.add(
+            MainMineFragment.newInstance(),
+            getString(R.string.main_mine),
+            getDrawable(R.drawable.main_selector_mine)!!
+        )
+
+        manager.setSelectColor(getColor(R.color.colorPrimary))
+        manager.setUnSelectColor(getColor(R.color.colorGray_9))
+    }
+
+
+    private fun getHomeFragment(): Fragment {
+        val service = ARouter.getInstance().navigation(IMainHomeService::class.java)
+        return service.getFragment()
+
+    }
+
+
+    private fun getActiveFragment(): Fragment {
+        val service = ARouter.getInstance().navigation(IMainActiveService::class.java)
+        return service.getFragment()
+
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
