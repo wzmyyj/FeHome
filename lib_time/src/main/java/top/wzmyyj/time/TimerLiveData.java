@@ -85,9 +85,9 @@ public class TimerLiveData extends LiveData<Long> {
     }
 
     private void minTimerInterval() {
-        if (array.get(TimerInterval.IntervalLV0) > 0) {
+        if (array.get(TimerInterval.IntervalLV0,0) > 0) {
             timer.setTimerInterval(TimerInterval.IntervalLV0);
-        } else if (array.get(TimerInterval.IntervalLV1) > 0) {
+        } else if (array.get(TimerInterval.IntervalLV1,0) > 0) {
             timer.setTimerInterval(TimerInterval.IntervalLV1);
         } else {
             timer.setTimerInterval(TimerInterval.IntervalLV2);
