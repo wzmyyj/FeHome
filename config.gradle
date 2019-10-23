@@ -8,21 +8,12 @@ ext {
     ]
 
 
-    runAlone = [
-            main        : false,
-            main_home   : false,
-            main_active : false,
-            main_message: false,
-            main_mine   : false
-    ]
-
-
     def version = [
             androidx                : "1.1.0",
             retrofit                : "2.4.0",
             androidSupportSdkVersion: "28.0.0",
             canarySdkVersion        : "1.5.4",
-            glideSdkVersion         : "4.8.0"
+            glideSdkVersion         : "4.8.0",
     ]
 
     dependencies = [

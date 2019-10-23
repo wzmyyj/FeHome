@@ -1,4 +1,4 @@
-package top.wzmyyj.main_active.ui
+package top.wzmyyj.main_message.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.alibaba.android.arouter.facade.annotation.Route
 import top.wzmyyj.common.base.CBaseFragment
 import top.wzmyyj.common_service.ModulePath
-import top.wzmyyj.main_active.databinding.MainActiveFragmentBinding
+import top.wzmyyj.main_message.databinding.MainMessageFragmentBinding
 
 /**
  * Created on 2019/09/30.
@@ -16,15 +16,15 @@ import top.wzmyyj.main_active.databinding.MainActiveFragmentBinding
  * @version 1.0.0
  * @since 1.0.0
  */
-@Route(path = ModulePath.MAIN_ACTIVE, name = "主页活动模块Fragment")
-class MainActiveFragment : CBaseFragment() {
+@Route(path = ModulePath.MAIN_MESSAGE, name = "主页消息模块Fragment")
+class MainMessageFragment : CBaseFragment() {
 
     companion object {
-        fun newInstance() = MainActiveFragment()
+        fun newInstance() = MainMessageFragment()
     }
 
     private val binding by lazy {
-        MainActiveFragmentBinding.inflate(layoutInflater, null, false)
+        MainMessageFragmentBinding.inflate(layoutInflater, null, false)
     }
 
     override fun onCreateView(
@@ -33,5 +33,10 @@ class MainActiveFragment : CBaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        binding.countDown.setEndTime(System.currentTimeMillis() + 10 * 60 * 1000L)
     }
 }

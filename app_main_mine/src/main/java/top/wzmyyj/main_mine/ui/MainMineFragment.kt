@@ -1,12 +1,13 @@
-package top.wzmyyj.main.fragment
+package top.wzmyyj.main_mine.ui
 
 import android.os.Bundle
-import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.alibaba.android.arouter.facade.annotation.Route
 import top.wzmyyj.common.base.CBaseFragment
-import top.wzmyyj.main.databinding.MainMessageFragmentBinding
+import top.wzmyyj.common_service.ModulePath
+import top.wzmyyj.main_mine.databinding.MainMineFragmentBinding
 
 /**
  * Created on 2019/09/30.
@@ -15,14 +16,15 @@ import top.wzmyyj.main.databinding.MainMessageFragmentBinding
  * @version 1.0.0
  * @since 1.0.0
  */
-class MainMessageFragment : CBaseFragment() {
+@Route(path = ModulePath.MAIN_MINE, name = "主页我的模块Fragment")
+class MainMineFragment : CBaseFragment() {
 
     companion object {
-        fun newInstance() = MainMessageFragment()
+        fun newInstance() = MainMineFragment()
     }
 
     private val binding by lazy {
-        MainMessageFragmentBinding.inflate(layoutInflater, null, false)
+        MainMineFragmentBinding.inflate(layoutInflater, null, false)
     }
 
     override fun onCreateView(
@@ -31,10 +33,5 @@ class MainMessageFragment : CBaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         return binding.root
-    }
-
-    override fun onResume() {
-        super.onResume()
-        binding.countDown.setEndTime(System.currentTimeMillis() + 10 * 60 * 1000L)
     }
 }
