@@ -1,13 +1,12 @@
 package top.wzmyyj.time;
 
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
+import android.util.LongSparseArray;
 
-import androidx.annotation.LongDef;
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 /**
  * Created on 2019/10/21.
@@ -21,6 +20,7 @@ public class TimerLiveData extends LiveData<Long> {
     @MainThread
     private TimerLiveData() {
         timer = new Timer(this::setValue);
+        array = new LongSparseArray<>();
     }
 
     private static class Holder {
@@ -35,13 +35,8 @@ public class TimerLiveData extends LiveData<Long> {
     @NonNull
     private final Timer timer;
 
-
-    public void minTimerInterval(@TimerInterval long timerInterval) {
-        if (timer.getTimerInterval() > timerInterval) {
-            timer.setTimerInterval(timerInterval);
-        }
-    }
-
+    @NonNull
+    private final LongSparseArray<Integer> array;
 
     @Override
     protected void onActive() {
@@ -55,91 +50,48 @@ public class TimerLiveData extends LiveData<Long> {
         timer.cancel();
     }
 
-
-    @LongDef({
-            TimerInterval.IntervalLV0,
-            TimerInterval.IntervalLV1,
-            TimerInterval.IntervalLV2,
-            TimerInterval.IntervalLV3
-    })
-    public @interface TimerInterval {
-        long IntervalLV0 = 10L;
-        long IntervalLV1 = 100L;
-        long IntervalLV2 = 1000L;
-        long IntervalLV3 = 60000L;
+    @Override
+    public void observe(@NonNull LifecycleOwner owner, @NonNull Observer<? super Long> observer) {
+        super.observe(owner, observer);
+        if (observer instanceof TimerInterval.Get) {
+            modTimerInterval((TimerInterval.Get) observer, 1);
+        }
     }
 
-    @MainThread
-    public static class Timer {
-
-        interface OnTickListener {
-            void onTick(long tickTime);
+    @Override
+    public void observeForever(@NonNull Observer<? super Long> observer) {
+        super.observeForever(observer);
+        if (observer instanceof TimerInterval.Get) {
+            modTimerInterval((TimerInterval.Get) observer, 1);
         }
 
-        public Timer(@NonNull OnTickListener onTickListener) {
-            this.timerInterval = TimerInterval.IntervalLV1;
-            this.onTickListener = onTickListener;
+    }
+
+    @Override
+    public void removeObserver(@NonNull Observer<? super Long> observer) {
+        super.removeObserver(observer);
+        if (observer instanceof TimerInterval.Get) {
+            modTimerInterval((TimerInterval.Get) observer, -1);
         }
+    }
 
 
-        /**
-         * The interval in millis that the user receives callbacks
-         */
+    private void modTimerInterval(TimerInterval.Get o, int plus) {
         @TimerInterval
-        private long timerInterval;
+        long interval = o.getTimerInterval();
+        int count = array.get(interval, 0);
+        array.put(interval, count + plus);
+        minTimerInterval();
+    }
 
-        public void setTimerInterval(long timerInterval) {
-            this.timerInterval = timerInterval;
+    private void minTimerInterval() {
+        if (array.get(TimerInterval.IntervalLV0) > 0) {
+            timer.setTimerInterval(TimerInterval.IntervalLV0);
+        } else if (array.get(TimerInterval.IntervalLV1) > 0) {
+            timer.setTimerInterval(TimerInterval.IntervalLV1);
+        } else {
+            timer.setTimerInterval(TimerInterval.IntervalLV2);
         }
-
-        public long getTimerInterval() {
-            return timerInterval;
-        }
-
-        @NonNull
-        private final OnTickListener onTickListener;
-
-
-        /**
-         * boolean representing if the timer was cancelled
-         */
-        private boolean mCancelled = false;
-
-
-        /**
-         * Cancel the timer.
-         */
-        public synchronized final void cancel() {
-            mCancelled = true;
-            mHandler.removeMessages(MSG);
-        }
-
-        /**
-         * Start the timer.
-         */
-        public synchronized final void start() {
-            mCancelled = false;
-            mHandler.sendMessage(mHandler.obtainMessage(MSG));
-        }
-
-        private static final int MSG = 1;
-
-        @SuppressLint("HandlerLeak")
-        private Handler mHandler = new Handler() {
-
-            @Override
-            public void handleMessage(@NonNull Message msg) {
-
-                synchronized (Timer.this) {
-                    if (mCancelled) {
-                        return;
-                    }
-                    final long millis = System.currentTimeMillis();
-                    onTickListener.onTick(millis);
-                    sendMessageDelayed(obtainMessage(MSG), timerInterval);
-                }
-            }
-        };
     }
 
 

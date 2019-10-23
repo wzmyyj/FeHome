@@ -13,7 +13,24 @@ import androidx.lifecycle.Observer;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class CountDownTimer implements Observer<Long> {
+public class CountDownTimer implements Observer<Long>, TimerInterval.Get {
+
+    public CountDownTimer() {
+        this.timerInterval = TimerInterval.IntervalLV2;
+    }
+
+    public CountDownTimer(@TimerInterval long timerInterval) {
+        this.timerInterval = timerInterval;
+    }
+
+    @Override
+    @TimerInterval
+    public long getTimerInterval() {
+        return timerInterval;
+    }
+
+    @TimerInterval
+    private final long timerInterval;
 
     private long endTime;
 
@@ -45,6 +62,7 @@ public class CountDownTimer implements Observer<Long> {
         this.onCountdownTickListener = onCountdownTickListener;
     }
 
+
     public interface OnCountdownEndListener {
         void onEnd();
     }
@@ -55,17 +73,22 @@ public class CountDownTimer implements Observer<Long> {
 
     private boolean isEnd = false;
 
+
+    private long nowTime = 0;
+
     @Override
     public final void onChanged(Long aLong) {
         if (isEnd) return;
-        if (aLong >= endTime) {
+        if (Math.abs(aLong - nowTime) < timerInterval) return;
+        nowTime = aLong;
+        if (nowTime >= endTime) {
             if (onCountdownEndListener != null) {
                 onCountdownEndListener.onEnd();
                 isEnd = true;
             }
         } else {
             if (onCountdownTickListener != null) {
-                onCountdownTickListener.onTick(endTime - aLong);
+                onCountdownTickListener.onTick(endTime - nowTime);
             }
         }
 
@@ -92,7 +115,7 @@ public class CountDownTimer implements Observer<Long> {
     public synchronized final void attach(@NonNull View v) {
         LifecycleOwner owner = Util.getOwner(v);
         if (owner == null) return;
-        TimerLiveData.getInstance().observe(owner, this);
+        attach(owner);
     }
 
     /**
