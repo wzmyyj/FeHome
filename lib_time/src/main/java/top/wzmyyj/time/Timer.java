@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 /**
  * Created on 2019/10/23.
  *
+ * 真正的时间流逝逻辑类。
+ *
  * @author feling
  * @version 1.0.0
  * @since 1.0.0

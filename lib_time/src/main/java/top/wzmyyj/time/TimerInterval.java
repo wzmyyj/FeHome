@@ -5,6 +5,8 @@ import androidx.annotation.LongDef;
 /**
  * Created on 2019/10/23.
  *
+ * 时间间隔等级。
+ *
  * @author feling
  * @version 1.0.0
  * @since 1.0.0

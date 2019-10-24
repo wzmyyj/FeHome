@@ -8,6 +8,8 @@ import androidx.appcompat.widget.AppCompatTextView;
 /**
  * Created on 2019/10/21.
  *
+ * 倒计时控件示例。
+ *
  * @author feling
  * @version 1.0.0
  * @since 1.0.0

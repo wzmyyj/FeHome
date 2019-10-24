@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer;
 /**
  * Created on 2019/10/21.
  *
+ * 倒计时观察者。
+ *
  * @author feling
  * @version 1.0.0
  * @since 1.0.0
