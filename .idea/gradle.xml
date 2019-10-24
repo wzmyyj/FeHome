@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app_hero" />
             <option value="$PROJECT_DIR$/app_login" />
             <option value="$PROJECT_DIR$/app_main" />
             <option value="$PROJECT_DIR$/app_main_active" />
