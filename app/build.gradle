@@ -5,8 +5,6 @@ apply plugin: 'kotlin-kapt'
 
 android {
 
-    ext.VersionName = "1.0.0"
-
     resourcePrefix "app_"
 
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -15,8 +13,8 @@ android {
         applicationId "top.wzmyyj.fehome"
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode getCodeFromName(VersionName)
-        versionName VersionName
+        versionName rootProject.ext.app.versionName
+        versionCode getVersionCodeFromName(versionName)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
 

@@ -1,5 +1,9 @@
 ext {
 
+    app = [
+            versionName: "1.0.0",
+    ]
+
     runAlone = [
             main        : false,
             main_home   : false,
