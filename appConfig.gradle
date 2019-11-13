@@ -5,19 +5,19 @@ ext {
     ]
 
     runAlone = [
-            main        : false,
-            main_home   : false,
-            main_active : false,
-            main_message: false,
-            main_mine   : false,
-            trend       : false,
-            login       : false,
-            setting     : false,
-            web         : false,
-            hero        : false,
-            pet         : false,
-            equipment   : false,
-            news        : false,
+            main     : false,
+            home     : false,
+            active   : false,
+            message  : false,
+            mine     : false,
+            trend    : false,
+            login    : false,
+            setting  : false,
+            web      : false,
+            hero     : false,
+            pet      : false,
+            equipment: false,
+            news     : false,
     ]
 
 }

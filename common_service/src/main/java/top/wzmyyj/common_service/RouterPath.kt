@@ -11,57 +11,52 @@ import androidx.annotation.StringDef
  */
 
 @StringDef(
-    ModulePath.MAIN_HOME,
-    ModulePath.MAIN_ACTIVE,
-    ModulePath.MAIN_MESSAGE,
-    ModulePath.MAIN_MINE
+    ActivityPath.MAIN,
+    ActivityPath.HOME,
+    ActivityPath.ACTIVE,
+    ActivityPath.MESSAGE,
+    ActivityPath.MINE
 )
-annotation class ModulePath {
+annotation class ActivityPath {
     companion object {
 
-        const val MAIN_HOME = "/main_home/module"
+        const val MAIN = "/main/module"
 
-        const val MAIN_ACTIVE = "/main_active/module"
+        const val HOME = "/home/module"
 
-        const val MAIN_MESSAGE = "/main_message/module"
+        const val ACTIVE = "/active/module"
 
-        const val MAIN_MINE = "/main_mine/module"
+        const val MESSAGE = "/message/module"
 
+        const val MINE = "/mine/module"
 
-        fun isIn(name: String): Boolean {
-            return MAIN_HOME == name
-                    || MAIN_ACTIVE == name
-                    || MAIN_MESSAGE == name
-                    || MAIN_MINE == name
+        fun isIn(path: String): Boolean {
+            return MAIN == path
+                    || HOME == path
+                    || ACTIVE == path
+                    || MESSAGE == path
+
         }
-
     }
 }
 
 
 @StringDef(
-    ServicePath.MAIN_HOME,
-    ServicePath.MAIN_ACTIVE,
-    ServicePath.MAIN_MESSAGE,
-    ServicePath.MAIN_MINE
+    ServicePath.HOME,
+    ServicePath.ACTIVE,
+    ServicePath.MESSAGE,
+    ServicePath.MINE
 )
 annotation class ServicePath {
     companion object {
 
-        const val MAIN_HOME = "/main_home/service"
+        const val HOME = "/home/service"
 
-        const val MAIN_ACTIVE = "/main_active/service"
+        const val ACTIVE = "/active/service"
 
-        const val MAIN_MESSAGE = "/main_message/service"
+        const val MESSAGE = "/message/service"
 
-        const val MAIN_MINE = "/main_mine/service"
-
-        fun isIn(name: String): Boolean {
-            return MAIN_HOME == name
-                    || MAIN_ACTIVE == name
-                    || MAIN_MESSAGE == name
-                    || MAIN_MINE == name
-        }
+        const val MINE = "/mine/service"
 
     }
 }

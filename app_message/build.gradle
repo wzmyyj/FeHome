@@ -1,23 +1,31 @@
-apply plugin: 'com.android.application'
+def runAlone = rootProject.ext.runAlone.message.toBoolean()
+
+if (runAlone) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
 
-    resourcePrefix "app_"
+    resourcePrefix "message_"
 
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
-        applicationId "top.wzmyyj.fehome"
+        if (runAlone) {
+            applicationId "top.wzmyyj.message"
+        }
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionName rootProject.ext.app.versionName
         versionCode getVersionCodeFromName(versionName)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
-
 
         multiDexEnabled true
     }
@@ -44,6 +52,20 @@ android {
         enabled = true
     }
 
+    sourceSets {
+        main {
+            // 单独调试与集成调试时使用不同的 AndroidManifest.xml 文件
+            if (runAlone) {
+                manifest.srcFile 'src/main/runalone/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    exclude 'src/main/runalone/*'
+                }
+            }
+        }
+    }
+
     flavorDimensions "channel"
 
     productFlavors {
@@ -54,6 +76,7 @@ android {
         // 官方渠道
         official {}
     }
+
 }
 
 dependencies {
@@ -70,22 +93,6 @@ dependencies {
     implementation rootProject.ext.dependencies.arouter_api
     kapt rootProject.ext.dependencies.arouter_compiler
 
-
-    if (!rootProject.ext.runAlone.main.toBoolean()) {
-        api project(':app_main')
-    }
-    if (!rootProject.ext.runAlone.home.toBoolean()) {
-        api project(':app_home')
-    }
-    if (!rootProject.ext.runAlone.active.toBoolean()) {
-        api project(':app_active')
-    }
-    if (!rootProject.ext.runAlone.message.toBoolean()) {
-        api project(':app_message')
-    }
-    if (!rootProject.ext.runAlone.mine.toBoolean()) {
-        api project(':app_mine')
-    }
     api project(':common')
     api project(':common_service')
 

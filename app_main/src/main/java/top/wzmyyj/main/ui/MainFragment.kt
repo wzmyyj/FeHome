@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.launcher.ARouter
 import top.wzmyyj.common.base.CBaseFragment
-import top.wzmyyj.common_service.ModulePath
+import top.wzmyyj.common_service.ActivityPath
 import top.wzmyyj.kit.helper.PagerTabManager
 import top.wzmyyj.kit.helper.PagerTabHelper
 import top.wzmyyj.main.R
@@ -48,7 +48,7 @@ class MainFragment : CBaseFragment() {
     private fun addHomeFragment(manager: PagerTabManager) {
         val fragment = ARouter
             .getInstance()
-            .build(ModulePath.MAIN_HOME)
+            .build(ActivityPath.HOME)
             .navigation() as? Fragment ?: return
 
         manager.add(
@@ -60,7 +60,7 @@ class MainFragment : CBaseFragment() {
     private fun addActiveFragment(manager: PagerTabManager) {
         val fragment = ARouter
             .getInstance()
-            .build(ModulePath.MAIN_ACTIVE)
+            .build(ActivityPath.ACTIVE)
             .navigation() as? Fragment ?: return
 
         manager.add(
@@ -72,7 +72,7 @@ class MainFragment : CBaseFragment() {
     private fun addMessageFragment(manager: PagerTabManager) {
         val fragment = ARouter
             .getInstance()
-            .build(ModulePath.MAIN_MESSAGE)
+            .build(ActivityPath.MESSAGE)
             .navigation() as? Fragment ?: return
 
         manager.add(
@@ -84,7 +84,7 @@ class MainFragment : CBaseFragment() {
     private fun addMineFragment(manager: PagerTabManager) {
         val fragment = ARouter
             .getInstance()
-            .build(ModulePath.MAIN_MINE)
+            .build(ActivityPath.MINE)
             .navigation() as? Fragment ?: return
 
         manager.add(

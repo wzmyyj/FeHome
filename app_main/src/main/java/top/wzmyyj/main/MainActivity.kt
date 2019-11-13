@@ -1,8 +1,10 @@
 package top.wzmyyj.main
 
 import android.os.Bundle
+import com.alibaba.android.arouter.facade.annotation.Route
 import top.wzmyyj.common.base.CBaseActivity
 import top.wzmyyj.common.base.replaceFragment
+import top.wzmyyj.common_service.ActivityPath
 import top.wzmyyj.main.ui.MainFragment
 
 /**
@@ -12,6 +14,7 @@ import top.wzmyyj.main.ui.MainFragment
  * @version 1.0.0
  * @since 1.0.0
  */
+@Route(path = ActivityPath.MAIN, name = "主页模块")
 class MainActivity : CBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
