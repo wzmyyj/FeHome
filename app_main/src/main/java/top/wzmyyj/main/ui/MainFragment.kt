@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.launcher.ARouter
 import top.wzmyyj.common.base.CBaseFragment
-import top.wzmyyj.common_service.ActivityPath
+import top.wzmyyj.common_service.RouterManager
+import top.wzmyyj.common_service.ServicePath
+import top.wzmyyj.common_service.active.IActiveService
+import top.wzmyyj.common_service.home.IHomeService
+import top.wzmyyj.common_service.message.IMessageService
+import top.wzmyyj.common_service.mine.IMineService
 import top.wzmyyj.kit.helper.PagerTabManager
 import top.wzmyyj.kit.helper.PagerTabHelper
 import top.wzmyyj.main.R
@@ -46,10 +50,9 @@ class MainFragment : CBaseFragment() {
 
 
     private fun addHomeFragment(manager: PagerTabManager) {
-        val fragment = ARouter
-            .getInstance()
-            .build(ActivityPath.HOME)
-            .navigation() as? Fragment ?: return
+        val fragment = RouterManager
+            .getService(IHomeService::class.java)
+            ?.getFragment() ?: return
 
         manager.add(
             fragment, getString(R.string.main_home),
@@ -58,10 +61,13 @@ class MainFragment : CBaseFragment() {
     }
 
     private fun addActiveFragment(manager: PagerTabManager) {
-        val fragment = ARouter
-            .getInstance()
-            .build(ActivityPath.ACTIVE)
-            .navigation() as? Fragment ?: return
+        val fragment  =(ARouter.getInstance()
+            .build(ServicePath.ACTIVE)
+            .navigation() as? IActiveService)
+//
+//        val fragment = RouterManager
+//            .getService(IActiveService::class.java)
+            ?.getFragment() ?: return
 
         manager.add(
             fragment, getString(R.string.main_active),
@@ -70,10 +76,9 @@ class MainFragment : CBaseFragment() {
     }
 
     private fun addMessageFragment(manager: PagerTabManager) {
-        val fragment = ARouter
-            .getInstance()
-            .build(ActivityPath.MESSAGE)
-            .navigation() as? Fragment ?: return
+        val fragment = RouterManager
+            .getService(IMessageService::class.java)
+            ?.getFragment() ?: return
 
         manager.add(
             fragment, getString(R.string.main_message),
@@ -82,10 +87,9 @@ class MainFragment : CBaseFragment() {
     }
 
     private fun addMineFragment(manager: PagerTabManager) {
-        val fragment = ARouter
-            .getInstance()
-            .build(ActivityPath.MINE)
-            .navigation() as? Fragment ?: return
+        val fragment = RouterManager
+            .getService(IMineService::class.java)
+            ?.getFragment() ?: return
 
         manager.add(
             fragment, getString(R.string.main_mine),

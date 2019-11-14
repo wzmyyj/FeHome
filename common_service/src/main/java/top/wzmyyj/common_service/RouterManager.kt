@@ -18,13 +18,20 @@ object RouterManager {
     private const val FROM_PAGE = "from_page"
 
 
-    fun goPage(path: String, target: String, params: Bundle, fromPage: String) {
+    fun goMain(fromPage: String) {
+        postcard(ActivityPath.MAIN, "", null, fromPage)
+            .navigation()
+    }
+
+
+    fun goPage(path: String, target: String, params: Bundle?, fromPage: String) {
+        if (!ActivityPath.isIn(path)) return
         postcard(path, target, params, fromPage).navigation()
     }
 
     private fun postcard(
         @ActivityPath path: String, target:
-        String, params: Bundle, fromPage: String
+        String, params: Bundle?, fromPage: String
     ): Postcard {
         return ARouter.getInstance().build(path)
             .withString(FROM_PAGE, fromPage)

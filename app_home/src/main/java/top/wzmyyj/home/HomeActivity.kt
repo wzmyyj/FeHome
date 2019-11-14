@@ -13,7 +13,7 @@ import top.wzmyyj.home.ui.HomeFragment
  * @version 1.0.0
  * @since 1.0.0
  */
-@Route(path = ActivityPath.ACTIVE, name = "首页模块")
+@Route(path = ActivityPath.HOME, name = "首页模块")
 class HomeActivity : TestActivity() {
 
     override fun getFragment(): Fragment? {

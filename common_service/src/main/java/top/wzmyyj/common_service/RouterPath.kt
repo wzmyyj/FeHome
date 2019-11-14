@@ -20,15 +20,15 @@ import androidx.annotation.StringDef
 annotation class ActivityPath {
     companion object {
 
-        const val MAIN = "/main/module"
+        const val MAIN = "/main/activity"
 
-        const val HOME = "/home/module"
+        const val HOME = "/home/activity"
 
-        const val ACTIVE = "/active/module"
+        const val ACTIVE = "/active/activity"
 
-        const val MESSAGE = "/message/module"
+        const val MESSAGE = "/message/activity"
 
-        const val MINE = "/mine/module"
+        const val MINE = "/mine/activity"
 
         fun isIn(path: String): Boolean {
             return MAIN == path
