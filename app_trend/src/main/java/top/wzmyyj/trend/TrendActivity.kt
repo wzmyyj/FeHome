@@ -11,7 +11,7 @@ import top.wzmyyj.trend.ui.TrendFragment
  * Created on 2019/11/14.
  *
  * @author feling
- * @version 1.0.0
+ * @version 1.0.1
  * @since 1.0.0
  */
 @Route(path = ActivityPath.TREND, name = "动态模块")

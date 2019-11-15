@@ -18,7 +18,7 @@ import top.wzmyyj.common_service.RouterManager
  * Created on 2019/09/30.
  *
  * @author feling
- * @version 1.0.0
+ * @version 1.0.1
  * @since 1.0.0
  */
 class ActiveFragment : CBaseFragment() {

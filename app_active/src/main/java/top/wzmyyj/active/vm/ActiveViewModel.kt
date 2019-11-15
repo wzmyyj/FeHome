@@ -12,7 +12,7 @@ import top.wzmyyj.common_service.ActivityPath
  * Created on 2019/11/14.
  *
  * @author feling
- * @version 1.0.0
+ * @version 1.0.1
  * @since 1.0.0
  */
 
@@ -24,7 +24,7 @@ class ActiveViewModel(application: Application) : CBaseViewModel(application) {
 
     fun getData() {
         val list = ArrayList<IActiveModelType>()
-        val model = ActiveItemModel(path = ActivityPath.TREND,desc = "Adapter实验")
+        val model = ActiveItemModel(path = ActivityPath.TREND, desc = "Adapter实验")
         list.add(model)
         _listLiveData.value = list
     }
