@@ -15,5 +15,6 @@ class FeHomeApp : Application() {
     override fun onCreate() {
         super.onCreate()
         ARouter.init(this)
+        ARouter.openDebug()
     }
 }

@@ -38,6 +38,7 @@ class MainFragment : CBaseFragment() {
                 addActiveFragment(manager)
                 addMessageFragment(manager)
                 addMineFragment(manager)
+                manager.setFirstWhich(1)
             }
         }
     }

@@ -24,7 +24,7 @@ class ActiveViewModel(application: Application) : CBaseViewModel(application) {
 
     fun getData() {
         val list = ArrayList<IActiveModelType>()
-        val model = ActiveItemModel(path = ActivityPath.TREND)
+        val model = ActiveItemModel(path = ActivityPath.TREND,desc = "Adapter实验")
         list.add(model)
         _listLiveData.value = list
     }
