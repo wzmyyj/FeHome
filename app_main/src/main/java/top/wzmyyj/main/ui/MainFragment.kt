@@ -61,12 +61,8 @@ class MainFragment : CBaseFragment() {
     }
 
     private fun addActiveFragment(manager: PagerTabManager) {
-        val fragment  =(ARouter.getInstance()
-            .build(ServicePath.ACTIVE)
-            .navigation() as? IActiveService)
-//
-//        val fragment = RouterManager
-//            .getService(IActiveService::class.java)
+        val fragment = RouterManager
+            .getService(IActiveService::class.java)
             ?.getFragment() ?: return
 
         manager.add(

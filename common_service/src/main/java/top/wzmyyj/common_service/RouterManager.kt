@@ -24,6 +24,12 @@ object RouterManager {
     }
 
 
+    fun goTrend(fromPage: String){
+        postcard(ActivityPath.TREND, "", null, fromPage)
+            .navigation()
+    }
+
+
     fun goPage(path: String, target: String, params: Bundle?, fromPage: String) {
         if (!ActivityPath.isIn(path)) return
         postcard(path, target, params, fromPage).navigation()

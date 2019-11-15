@@ -30,11 +30,14 @@ annotation class ActivityPath {
 
         const val MINE = "/mine/activity"
 
+        const val TREND = "/trend/activity"
+
         fun isIn(path: String): Boolean {
-            return MAIN == path
-                    || HOME == path
-                    || ACTIVE == path
-                    || MESSAGE == path
+            return path == MAIN
+                    || path == HOME
+                    || path == ACTIVE
+                    || path == MESSAGE
+                    || path == TREND
 
         }
     }

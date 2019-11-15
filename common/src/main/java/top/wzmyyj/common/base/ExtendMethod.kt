@@ -3,6 +3,9 @@ package top.wzmyyj.common.base
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProviders
+import top.wzmyyj.base.viewmodel.BaseViewModel
 import top.wzmyyj.utils.app.FragmentUtil
 
 /**
@@ -67,4 +70,27 @@ fun Fragment.replaceFragment(
     isAddToBackStack: Boolean = false, tag: String? = null
 ) {
     childFragmentManager.replaceFragment(containerId, fragment, isAddToBackStack, tag)
+}
+
+
+fun <T : CBaseViewModel> FragmentActivity.getViewModel(modelClass: Class<T>): T {
+    return ViewModelProviders.of(this).get(modelClass)
+}
+
+fun <T : CBaseViewModel> Fragment.getViewModel(modelClass: Class<T>): T {
+    return ViewModelProviders.of(this).get(modelClass)
+}
+
+fun <T : CBaseViewModel> Fragment.getViewModelOfParent(modelClass: Class<T>): T? {
+    return ViewModelProviders.of(parentFragment ?: return null).get(modelClass)
+
+}
+
+fun <T : CBaseViewModel> Fragment.getViewModelOfActivity(modelClass: Class<T>): T? {
+    return ViewModelProviders.of(activity ?: return null).get(modelClass)
+}
+
+fun <T : CBaseViewModel> T.addToLifecycle(lifecycle: Lifecycle): T {
+    lifecycle.addObserver(this)
+    return this
 }

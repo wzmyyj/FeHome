@@ -12,5 +12,4 @@ import top.wzmyyj.base.viewmodel.BaseViewModel
  * @since 1.0.0
  */
 open class CBaseViewModel(application: Application) :
-    BaseViewModel(application),
-    DefaultLifecycleObserver
+    BaseViewModel(application), DefaultLifecycleObserver

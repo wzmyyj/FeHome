@@ -62,6 +62,8 @@ dependencies {
     implementation rootProject.ext.dependencies.androidx_appcompat
     implementation rootProject.ext.dependencies.androidx_core
     implementation rootProject.ext.dependencies.androidx_constraintlayout
+    implementation rootProject.ext.dependencies.androidx_lifecycle_java8
+
 
     testImplementation rootProject.ext.dependencies.junit
     androidTestImplementation rootProject.ext.dependencies.test_runner
@@ -70,6 +72,9 @@ dependencies {
     implementation rootProject.ext.dependencies.arouter_api
     kapt rootProject.ext.dependencies.arouter_compiler
 
+
+    api project(':common')
+    api project(':common_service')
 
     if (!rootProject.ext.runAlone.main.toBoolean()) {
         api project(':app_main')
@@ -86,7 +91,9 @@ dependencies {
     if (!rootProject.ext.runAlone.mine.toBoolean()) {
         api project(':app_mine')
     }
-    api project(':common')
-    api project(':common_service')
+    if (!rootProject.ext.runAlone.trend.toBoolean()) {
+        api project(':app_trend')
+    }
+
 
 }

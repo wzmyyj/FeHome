@@ -1,2 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="top.wzmyyj.trend" />
+    package="top.wzmyyj.trend">
+
+    <application>
+        <activity android:name=".TrendActivity" />
+    </application>
+</manifest>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="top.wzmyyj.trend.model.TrendUserItemModel" />
+
+        <variable
+            name="listener"
+            type="top.wzmyyj.trend.model.TrendUserItemModel.OnItemListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="#eeeeee"
+            android:gravity="center"
+            android:onClick="@{()->listener.onUserClick(item)}"
+            android:text="@{item.txt}" />
+
+    </LinearLayout>
+</layout>

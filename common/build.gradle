@@ -45,6 +45,8 @@ dependencies {
     implementation rootProject.ext.dependencies.androidx_core
     implementation rootProject.ext.dependencies.androidx_constraintlayout
     implementation rootProject.ext.dependencies.androidx_lifecycle_java8
+    implementation rootProject.ext.dependencies.androidx_lifecycle_ext
+
 
 
     testImplementation rootProject.ext.dependencies.junit
