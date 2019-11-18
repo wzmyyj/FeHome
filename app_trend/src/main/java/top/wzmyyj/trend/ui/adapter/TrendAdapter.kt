@@ -3,6 +3,7 @@ package top.wzmyyj.trend.ui.adapter
 import androidx.databinding.ViewDataBinding
 import top.wzmyyj.adapter.tree.BaseTreeAdapter
 import top.wzmyyj.adapter.base.ViewTypeDelegateManager
+import top.wzmyyj.adapter.tree.BaseTreeDiffAdapter
 import top.wzmyyj.trend.model.TrendItemEmptyModel
 import top.wzmyyj.trend.model.TrendItemHeaderModel
 import top.wzmyyj.trend.BR
@@ -15,7 +16,7 @@ import top.wzmyyj.trend.model.ITrendModelType
  * @version 1.0
  * @since 1.0
  */
-class TrendAdapter(private val listener: OnAdapterListener) : BaseTreeAdapter<ITrendModelType>() {
+class TrendAdapter(private val listener: OnAdapterListener) : BaseTreeDiffAdapter<ITrendModelType>() {
     override fun onCreateVHForAll(binding: ViewDataBinding) {
         binding.setVariable(BR.listener, listener)
     }

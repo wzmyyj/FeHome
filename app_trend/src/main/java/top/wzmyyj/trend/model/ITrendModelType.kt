@@ -1,5 +1,6 @@
 package top.wzmyyj.trend.model
 
+import top.wzmyyj.adapter.diff.IModelDiff
 import top.wzmyyj.adapter.tree.IModelTree
 
 /**
@@ -9,4 +10,4 @@ import top.wzmyyj.adapter.tree.IModelTree
  * @version 1.0
  * @since 1.0
  */
-interface ITrendModelType : IModelTree<ITrendModelType>
+interface ITrendModelType :  IModelTree<ITrendModelType>,IModelDiff<ITrendModelType>

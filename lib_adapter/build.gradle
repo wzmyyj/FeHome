@@ -3,15 +3,28 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+int getVersionCodeFromName(String versionName) {
+    if (versionName == null) return 0
+    String[] array = versionName.split("\\.").toList()
+    int major = array.length > 0 ? array[0].toInteger() : 0
+    int minor = array.length > 1 ? array[1].toInteger() : 0
+    int release = array.length > 2 ? array[2].toInteger() : 0
+    int code = major * 1000000 + minor * 1000 + release
+    println "VersionCode: " + code
+    return code
+}
+
 android {
+
+    ext.VersionName = "1.1.0"
 
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode 1
-        versionName "1.0.0"
+        versionCode getVersionCodeFromName(VersionName)
+        versionName VersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
 

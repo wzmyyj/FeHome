@@ -1,7 +1,7 @@
 package top.wzmyyj.trend.ui.adapter
 
 import androidx.databinding.ViewDataBinding
-import top.wzmyyj.adapter.base.BaseListAdapter
+import top.wzmyyj.adapter.list.BaseListAdapter
 import top.wzmyyj.trend.model.IUserModelType
 import top.wzmyyj.trend.model.TrendUserItemModel
 import top.wzmyyj.trend.BR

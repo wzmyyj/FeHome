@@ -1,4 +1,4 @@
-package top.wzmyyj.adapter.base
+package top.wzmyyj.adapter.list
 
 /**
  * Created on 2019/09/30.

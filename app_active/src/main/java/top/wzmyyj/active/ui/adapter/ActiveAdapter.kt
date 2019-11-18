@@ -4,7 +4,7 @@ import androidx.databinding.ViewDataBinding
 import top.wzmyyj.active.BR
 import top.wzmyyj.active.model.ActiveItemModel
 import top.wzmyyj.active.model.IActiveModelType
-import top.wzmyyj.adapter.base.BaseListAdapter
+import top.wzmyyj.adapter.list.BaseListAdapter
 
 /**
  * Created on 2019/11/15.
