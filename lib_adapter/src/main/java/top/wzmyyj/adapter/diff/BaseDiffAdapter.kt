@@ -2,9 +2,7 @@ package top.wzmyyj.adapter.diff
 
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import top.wzmyyj.adapter.base.BaseAdapter
-import top.wzmyyj.adapter.base.IModelType
 
 /**
  * Created on 2019/11/18.
