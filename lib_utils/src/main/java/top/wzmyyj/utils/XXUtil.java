@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class XXUtil {
+public final class XXUtil {
 
     private static final String TAG = XXUtil.class.getSimpleName();
 
@@ -31,7 +31,7 @@ public class XXUtil {
 
 
     /**
-     * Desc method funXXX's Function.
+     * Desc method funXXX'show Function.
      *
      * @param var1 desc var1.
      * @param var2 desc var1.

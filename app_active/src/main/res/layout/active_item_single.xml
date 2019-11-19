@@ -5,11 +5,11 @@
 
         <variable
             name="item"
-            type="top.wzmyyj.active.model.ActiveItemModel" />
+            type="top.wzmyyj.active.model.ActiveSingleModel" />
 
         <variable
             name="listener"
-            type="top.wzmyyj.active.model.ActiveItemModel.OnItemEventListener" />
+            type="top.wzmyyj.active.model.ActiveSingleModel.OnItemEventListener" />
 
     </data>
 
@@ -27,8 +27,8 @@
             android:layout_height="match_parent"
             android:background="@drawable/click_bg_white"
             android:gravity="center"
-            android:onClick="@{()->listener.onItemClick(item)}"
-            android:text="@{item.desc}" />
+            android:onClick="@{()->listener.onSingleClick(item)}"
+            android:text="@{item.title}" />
 
     </FrameLayout>
 </layout>

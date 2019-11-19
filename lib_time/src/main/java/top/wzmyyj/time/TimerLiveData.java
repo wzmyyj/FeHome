@@ -2,7 +2,6 @@ package top.wzmyyj.time;
 
 import android.util.LongSparseArray;
 
-import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
@@ -19,7 +18,6 @@ import androidx.lifecycle.Observer;
  */
 public class TimerLiveData extends LiveData<Long> {
 
-    @MainThread
     private TimerLiveData() {
         timer = new Timer(this::setValue);
         array = new LongSparseArray<>();

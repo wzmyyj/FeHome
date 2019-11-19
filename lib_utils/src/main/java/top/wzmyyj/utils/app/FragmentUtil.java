@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class FragmentUtil {
+public final class FragmentUtil {
 
     private static final String TAG = FragmentUtil.class.getSimpleName();
 

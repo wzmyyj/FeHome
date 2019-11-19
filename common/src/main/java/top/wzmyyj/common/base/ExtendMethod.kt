@@ -3,10 +3,12 @@ package top.wzmyyj.common.base
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import top.wzmyyj.base.viewmodel.BaseViewModel
+import top.wzmyyj.utils.app.ContextUtil
 import top.wzmyyj.utils.app.FragmentUtil
+import top.wzmyyj.utils.tools.ToastUtil
 
 /**
  * Created on 2019/09/30.
@@ -88,9 +90,4 @@ fun <T : CBaseViewModel> Fragment.getViewModelOfParent(modelClass: Class<T>): T?
 
 fun <T : CBaseViewModel> Fragment.getViewModelOfActivity(modelClass: Class<T>): T? {
     return ViewModelProviders.of(activity ?: return null).get(modelClass)
-}
-
-fun <T : CBaseViewModel> T.addToLifecycle(lifecycle: Lifecycle): T {
-    lifecycle.addObserver(this)
-    return this
 }

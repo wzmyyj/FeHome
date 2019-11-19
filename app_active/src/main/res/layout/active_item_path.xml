@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="top.wzmyyj.active.model.ActivePathModel" />
+
+        <variable
+            name="listener"
+            type="top.wzmyyj.active.model.ActivePathModel.OnItemEventListener" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorGray_g"
+        android:paddingStart="12dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="6dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/click_bg_white"
+            android:gravity="center"
+            android:onClick="@{()->listener.onPathClick(item)}"
+            android:text="@{item.title}" />
+
+    </FrameLayout>
+</layout>

@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import top.wzmyyj.common.base.CBaseFragment
-import top.wzmyyj.common.base.addToLifecycle
-import top.wzmyyj.common.base.getViewModel
 import top.wzmyyj.trend.ui.adapter.TrendAdapter
 import top.wzmyyj.trend.databinding.TrendFragmentBinding
 import top.wzmyyj.trend.model.*
@@ -40,7 +38,7 @@ class TrendFragment : CBaseFragment() {
     }
 
     private val vm by lazy {
-        getViewModel(TrendViewModel::class.java).addToLifecycle(lifecycle)
+        createViewModel(TrendViewModel::class.java)
     }
 
     private val mAdapter by lazy {

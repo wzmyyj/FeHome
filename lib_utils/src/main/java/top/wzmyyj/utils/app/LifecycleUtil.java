@@ -1,4 +1,4 @@
-package top.wzmyyj.time;
+package top.wzmyyj.utils.app;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,16 +16,37 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * Created on 2019/10/21.
+ * Created on 2019/11/19.
  *
  * @author feling
  * @version 1.0.0
  * @since 1.0.0
  */
-class Util {
+public final class LifecycleUtil {
 
+    private static final String TAG = LifecycleUtil.class.getSimpleName();
+
+    /**
+     * no instances.
+     */
+    private LifecycleUtil() {
+        throw new UnsupportedOperationException(TAG + "you can't instantiate me.");
+    }
+
+    /**
+     * for DEBUG.
+     */
+    public static boolean DEBUG = false;
+
+
+    /**
+     * find lifecycleOwner by view.
+     *
+     * @param v view
+     * @return lifecycleOwner
+     */
     @Nullable
-    static LifecycleOwner getOwner(@NonNull View v) {
+    public static LifecycleOwner getOwnerByView(@NonNull View v) {
         Context context = v.getContext();
         Activity activity = findActivity(context);
         LifecycleOwner result = null;
@@ -38,6 +59,10 @@ class Util {
         }
         return result;
     }
+
+
+    //--------------private method----------------//
+
 
     private static final ArrayMap<View, Fragment> tempViewToSupportFragment = new ArrayMap<>();
 
@@ -65,8 +90,10 @@ class Util {
         return result;
     }
 
-    private static void findAllSupportFragmentsWithViews(@Nullable Collection<Fragment> topLevelFragments,
-                                                         @NonNull Map<View, Fragment> result) {
+    private static void findAllSupportFragmentsWithViews(
+            @Nullable Collection<Fragment> topLevelFragments,
+            @NonNull Map<View, Fragment> result
+    ) {
         if (topLevelFragments == null) {
             return;
         }
@@ -79,7 +106,6 @@ class Util {
         }
     }
 
-
     @Nullable
     private static Activity findActivity(@Nullable Context context) {
         if (context == null) return null;
@@ -91,6 +117,4 @@ class Util {
         }
         return null;
     }
-
-
 }

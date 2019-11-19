@@ -2,6 +2,7 @@ package top.wzmyyj.time;
 
 import android.annotation.SuppressLint;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 
 import androidx.annotation.MainThread;
@@ -9,14 +10,13 @@ import androidx.annotation.NonNull;
 
 /**
  * Created on 2019/10/23.
- *
+ * <p>
  * 真正的时间流逝逻辑类。
  *
  * @author feling
  * @version 1.0.0
  * @since 1.0.0
  */
-@MainThread
 public class Timer {
 
     interface OnTickListener {
@@ -73,7 +73,7 @@ public class Timer {
     private static final int MSG = 1;
 
     @SuppressLint("HandlerLeak")
-    private Handler mHandler = new Handler() {
+    private Handler mHandler = new Handler(Looper.getMainLooper()) {
 
         @Override
         public void handleMessage(@NonNull Message msg) {

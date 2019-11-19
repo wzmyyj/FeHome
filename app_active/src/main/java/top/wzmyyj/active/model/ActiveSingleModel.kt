@@ -10,19 +10,16 @@ import top.wzmyyj.active.R
  * @version 1.0.0
  * @since 1.0.0
  */
-class ActiveItemModel(
+class ActiveSingleModel(
     /**
-     * path
+     * action
      */
-    var path: String = "",
+    var action: Int = 0,
+
     /**
-     * target
+     * title
      */
-    var target: String="",
-    /**
-     *
-     */
-    var params: Bundle?=null,
+    var title: String = "",
     /**
      * desc
      */
@@ -30,9 +27,9 @@ class ActiveItemModel(
 
 ) : IActiveModelType {
 
-    override fun getViewType() = R.layout.active_item
+    override fun getViewType() = R.layout.active_item_single
 
     interface OnItemEventListener {
-        fun onItemClick(model: ActiveItemModel)
+        fun onSingleClick(model: ActiveSingleModel)
     }
 }

@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import top.wzmyyj.common.base.CBaseFragment
 import top.wzmyyj.active.databinding.ActiveFragmentBinding
-import top.wzmyyj.active.model.ActiveItemModel
+import top.wzmyyj.active.model.ActivePathModel
+import top.wzmyyj.active.model.ActiveSingleModel
 import top.wzmyyj.active.ui.adapter.ActiveAdapter
 import top.wzmyyj.active.vm.ActiveViewModel
-import top.wzmyyj.common.base.addToLifecycle
-import top.wzmyyj.common.base.getViewModel
 import top.wzmyyj.common_service.RouterManager
 
 /**
@@ -32,7 +31,7 @@ class ActiveFragment : CBaseFragment() {
     }
 
     private val vm by lazy {
-        getViewModel(ActiveViewModel::class.java).addToLifecycle(lifecycle)
+        createViewModel(ActiveViewModel::class.java)
     }
 
     private val mAdapter by lazy {
@@ -80,8 +79,15 @@ class ActiveFragment : CBaseFragment() {
 
 
     private val listener = object : ActiveAdapter.OnAdapterListener {
-        override fun onItemClick(model: ActiveItemModel) {
+        override fun onPathClick(model: ActivePathModel) {
             RouterManager.goPage(model.path, model.target, model.params, "active")
+        }
+
+        override fun onSingleClick(model: ActiveSingleModel) {
+            when (model.action) {
+                1 -> vm.showToast(model.desc)
+
+            }
         }
     }
 }

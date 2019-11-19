@@ -2,7 +2,8 @@ package top.wzmyyj.active.vm
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import top.wzmyyj.active.model.ActiveItemModel
+import top.wzmyyj.active.model.ActivePathModel
+import top.wzmyyj.active.model.ActiveSingleModel
 import top.wzmyyj.active.model.IActiveModelType
 import top.wzmyyj.common.base.CBaseViewModel
 import top.wzmyyj.common.utils.noMutable
@@ -24,8 +25,8 @@ class ActiveViewModel(application: Application) : CBaseViewModel(application) {
 
     fun getData() {
         val list = ArrayList<IActiveModelType>()
-        val model = ActiveItemModel(path = ActivityPath.TREND, desc = "Adapter实验")
-        list.add(model)
+        list.add(ActivePathModel(title = "Adapter实验", path = ActivityPath.TREND))
+        list.add(ActiveSingleModel(title = "Toast实验", action = 1, desc = "这是一条Toast！"))
         _listLiveData.value = list
     }
 }

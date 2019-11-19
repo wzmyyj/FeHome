@@ -2,7 +2,8 @@ package top.wzmyyj.active.ui.adapter
 
 import androidx.databinding.ViewDataBinding
 import top.wzmyyj.active.BR
-import top.wzmyyj.active.model.ActiveItemModel
+import top.wzmyyj.active.model.ActivePathModel
+import top.wzmyyj.active.model.ActiveSingleModel
 import top.wzmyyj.active.model.IActiveModelType
 import top.wzmyyj.adapter.list.BaseListAdapter
 
@@ -23,6 +24,7 @@ class ActiveAdapter(private val listener: OnAdapterListener) : BaseListAdapter<I
         binding.setVariable(BR.item, m)
     }
 
-    interface OnAdapterListener : ActiveItemModel.OnItemEventListener
-
+    interface OnAdapterListener :
+        ActivePathModel.OnItemEventListener,
+        ActiveSingleModel.OnItemEventListener
 }
