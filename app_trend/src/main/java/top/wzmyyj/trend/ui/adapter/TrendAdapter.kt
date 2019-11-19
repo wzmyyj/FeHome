@@ -1,7 +1,6 @@
 package top.wzmyyj.trend.ui.adapter
 
 import androidx.databinding.ViewDataBinding
-import top.wzmyyj.adapter.tree.BaseTreeAdapter
 import top.wzmyyj.adapter.base.ViewTypeDelegateManager
 import top.wzmyyj.adapter.tree.BaseTreeDiffAdapter
 import top.wzmyyj.trend.model.TrendItemEmptyModel

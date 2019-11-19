@@ -21,8 +21,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#ffffff"
-            android:gravity="center"
+            android:gravity="start|center_vertical"
             android:text="@{item.txt}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:text="@{item.plusOne}" />
 
     </FrameLayout>
 

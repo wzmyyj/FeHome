@@ -2,6 +2,7 @@ package top.wzmyyj.adapter.diff
 
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import top.wzmyyj.adapter.base.BaseAdapter
 import top.wzmyyj.adapter.base.IModelType
 
@@ -19,14 +20,14 @@ abstract class BaseDiffAdapter<T : IModelDiff<T>> : BaseAdapter<T>() {
     }
 
     override fun list(): List<T> {
-        return differ().currentList
+        return mDiffer.currentList
     }
 
-    open fun submitList(list: List<T>) {
-        differ().submitList(list.multiList())
+    fun submitList(list: List<T>) {
+        mDiffer.submitList(list.multiList())
     }
 
-    open fun differ(): AsyncListDiffer<T> {
+    fun differ(): AsyncListDiffer<T> {
         return mDiffer
     }
 

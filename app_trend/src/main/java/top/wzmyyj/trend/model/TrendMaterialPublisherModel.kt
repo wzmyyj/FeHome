@@ -15,5 +15,22 @@ class TrendMaterialPublisherModel(
 
 ) : ITrendModelType {
 
+    var i: Int = 0
+
+    fun getPlusOne() = (++i).toString()
+
     override fun getViewType() = R.layout.trend_material_publisher
+
+    override fun areContentsTheSame(other: ITrendModelType): Boolean {
+//        return super.areContentsTheSame(other)
+        return if (other is TrendMaterialPublisherModel) {
+            txt == other.txt
+        } else {
+            false
+        }
+    }
+
+    override fun areItemsTheSame(other: ITrendModelType): Boolean {
+        return super.areItemsTheSame(other)
+    }
 }

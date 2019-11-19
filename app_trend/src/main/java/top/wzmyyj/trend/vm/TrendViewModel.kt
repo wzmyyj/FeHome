@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import top.wzmyyj.common.base.CBaseViewModel
 import top.wzmyyj.common.utils.noMutable
 import top.wzmyyj.trend.model.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Created on 2019/11/14.
@@ -19,6 +21,8 @@ class TrendViewModel(application: Application) : CBaseViewModel(application) {
 
     private val _listLiveData = MutableLiveData<List<ITrendModelType>>()
     val listLiveData = _listLiveData.noMutable()
+
+    private val list = LinkedList<ITrendModelType>()
 
     fun getData() {
         val head = TrendItemHeaderModel()
@@ -47,11 +51,11 @@ class TrendViewModel(application: Application) : CBaseViewModel(application) {
         pic2List.add(pic2)
 
         //或者
-//        val pic3List = ArrayList<TrendMaterialPic3Model>()
-//        val pic3 = TrendMaterialPic3Model()
-//        pic3List.add(pic3)
-//        pic3List.add(pic3)
-//        pic3List.add(pic3)
+        val pic3List = ArrayList<TrendMaterialPic3Model>()
+        val pic3 = TrendMaterialPic3Model()
+        pic3List.add(pic3)
+        pic3List.add(pic3)
+        pic3List.add(pic3)
 
 
         pic.pic2List = pic2List
@@ -60,8 +64,8 @@ class TrendViewModel(application: Application) : CBaseViewModel(application) {
         link.linkGoods = linkGoods
 
         //或者
-//        val linkMeeting = TrendLinkExhibitionModel()
-//        link.linkMeeting = linkMeeting
+        val linkMeeting = TrendLinkExhibitionModel()
+        link.linkMeeting = linkMeeting
 
 
         val userList = TrendUserListModel()
@@ -76,14 +80,27 @@ class TrendViewModel(application: Application) : CBaseViewModel(application) {
         userList.list.clear()
         userList.list.addAll(users)
 
-        val list = ArrayList<ITrendModelType>()
         list.add(head)
+        list.add(p)
         list.add(userList)
         list.add(material)
         list.add(material)
         list.add(material)
         list.add(empty)
         list.add(foot)
-        _listLiveData.value=list
+        _listLiveData.value = list
+    }
+
+    fun add() {
+        val publisher = TrendMaterialPublisherModel()
+        list.add(1, publisher)
+        _listLiveData.value = list
+    }
+
+    val p = TrendMaterialPublisherModel("VVVV")
+
+    fun mod() {
+        list[1] = p
+        _listLiveData.value = list
     }
 }

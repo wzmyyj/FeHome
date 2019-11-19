@@ -28,6 +28,12 @@ class TrendFragment : CBaseFragment() {
         fun newInstance() = TrendFragment()
     }
 
+    interface OnEventListener {
+        fun add()
+
+        fun mod()
+    }
+
 
     private val binding by lazy {
         TrendFragmentBinding.inflate(layoutInflater)!!
@@ -38,7 +44,7 @@ class TrendFragment : CBaseFragment() {
     }
 
     private val mAdapter by lazy {
-        TrendAdapter(listener)
+        TrendAdapter(adapterListener)
     }
 
     override fun onCreateView(
@@ -68,19 +74,32 @@ class TrendFragment : CBaseFragment() {
 
 
     private fun initView() {
+        binding.listener = eventListener
         binding.rv.adapter = mAdapter
     }
 
     private fun subscribeUI() {
         vm.listLiveData.observe(this, Observer {
-            it?.let { mAdapter.setData(it) }
+            it?.let { mAdapter.submitList(it) }
         })
         vm.getData()
 
     }
 
 
-    private val listener = object : TrendAdapter.OnAdapterListener {
+    private val eventListener = object : OnEventListener {
+        override fun add() {
+            vm.add()
+        }
+
+        override fun mod() {
+            vm.mod()
+        }
+
+    }
+
+
+    private val adapterListener = object : TrendAdapter.OnAdapterListener {
         override fun onUserClick(model: TrendUserItemModel) {
             Toast.makeText(activity, model.txt, Toast.LENGTH_SHORT).show()
         }

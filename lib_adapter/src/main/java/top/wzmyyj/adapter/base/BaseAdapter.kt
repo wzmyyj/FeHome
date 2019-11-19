@@ -71,9 +71,18 @@ abstract class BaseAdapter<T : IModelType> : RecyclerView.Adapter<BaseViewHolder
 
     protected abstract fun list(): List<T>
 
-    /**
-     * List数据结构需要改变时重写。即传入 List 经过变化后变成 items 需要的list。默认不改变结构。
-     */
-    protected abstract fun List<T>.multiList(): List<T>
+    protected fun List<T>.multiList(): List<T> {
+        return fix?.fix(this) ?: this
+    }
+
+    private var fix: IFix<T>? = null
+
+    fun setIFix(iMulti: IFix<T>) {
+        this.fix = iMulti
+    }
+
+    interface IFix<T> {
+        fun fix(list: List<T>): List<T>
+    }
 
 }

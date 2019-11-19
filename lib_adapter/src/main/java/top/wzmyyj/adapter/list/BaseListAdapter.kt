@@ -80,8 +80,4 @@ abstract class BaseListAdapter<M : IModelType> : BaseAdapter<M>(), IMutableListD
     override fun clearData() {
         items.clear()
     }
-
-    override fun List<M>.multiList(): List<M> {
-        return this
-    }
 }
