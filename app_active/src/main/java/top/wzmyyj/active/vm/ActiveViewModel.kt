@@ -25,8 +25,26 @@ class ActiveViewModel(application: Application) : CBaseViewModel(application) {
 
     fun getData() {
         val list = ArrayList<IActiveModelType>()
-        list.add(ActivePathModel(title = "Adapter实验", path = ActivityPath.TREND))
-        list.add(ActiveSingleModel(title = "Toast实验", action = 1, desc = "这是一条Toast！"))
+        list.add(
+            ActivePathModel(
+                title = "Adapter实验",
+                path = ActivityPath.TREND
+            )
+        )
+        list.add(
+            ActiveSingleModel(
+                title = "Toast实验",
+                action = 1,
+                desc = "这是一条Toast！"
+            )
+        )
+        list.add(
+            ActivePathModel(
+                title = "WorkManager实验",
+                path = ActivityPath.ACTIVE,
+                target = "work"
+            )
+        )
         _listLiveData.value = list
     }
 }

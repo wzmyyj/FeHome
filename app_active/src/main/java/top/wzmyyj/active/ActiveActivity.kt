@@ -4,7 +4,9 @@ import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import top.wzmyyj.common.test.TestActivity
 import top.wzmyyj.active.ui.ActiveFragment
+import top.wzmyyj.active.ui.WorkFragment
 import top.wzmyyj.common_service.ActivityPath
+import top.wzmyyj.common_service.RouterManager
 
 /**
  * Created on 2019/10/22.
@@ -17,6 +19,10 @@ import top.wzmyyj.common_service.ActivityPath
 class ActiveActivity : TestActivity() {
 
     override fun getFragment(): Fragment? {
+        val target = RouterManager.getTargetString(intent) ?: return ActiveFragment.newInstance()
+        when (target) {
+            "work" -> return WorkFragment.newInstance()
+        }
         return ActiveFragment.newInstance()
     }
 }

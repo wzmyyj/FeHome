@@ -2,8 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="top.wzmyyj.active">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application>
         <activity android:name=".ActiveActivity" />
+
+        <receiver android:name=".helper.NetStatusLiveData$NetBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

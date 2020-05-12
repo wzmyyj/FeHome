@@ -1,5 +1,6 @@
 package top.wzmyyj.common_service
 
+import android.content.Intent
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.launcher.ARouter
@@ -18,16 +19,51 @@ object RouterManager {
     private const val FROM_PAGE = "from_page"
 
 
+    /**
+     * 获取FromPage字段。
+     */
+    fun getFromPageString(intent: Intent?): String? {
+        if (intent == null) {
+            return null
+        }
+        return intent.getStringExtra(FROM_PAGE)
+    }
+
+    /**
+     * 获取Target字段。
+     */
+    fun getTargetString(intent: Intent?): String? {
+        if (intent == null) {
+            return null
+        }
+        return intent.getStringExtra(TARGET)
+    }
+
+    /**
+     * 获取Params字段。
+     */
+    fun getParamsString(intent: Intent?): Bundle? {
+        if (intent == null) {
+            return null
+        }
+        return intent.getBundleExtra(PARAMS)
+    }
+
     fun goMain(fromPage: String) {
         postcard(ActivityPath.MAIN, "", null, fromPage)
             .navigation()
     }
-
-
-    fun goTrend(fromPage: String) {
-        postcard(ActivityPath.TREND, "", null, fromPage)
-            .navigation()
-    }
+//
+//    fun goActive(fromPage: String, params: Bundle? = null) {
+//        postcard(ActivityPath.TREND, "", params, fromPage)
+//            .navigation()
+//    }
+//
+//
+//    fun goTrend(fromPage: String) {
+//        postcard(ActivityPath.TREND, "", null, fromPage)
+//            .navigation()
+//    }
 
 
     fun goPage(path: String, target: String, params: Bundle?, fromPage: String) {

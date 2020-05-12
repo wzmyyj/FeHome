@@ -95,6 +95,8 @@ dependencies {
     implementation rootProject.ext.dependencies.arouter_api
     kapt rootProject.ext.dependencies.arouter_compiler
 
+    implementation "androidx.work:work-runtime-ktx:2.3.4"
+
     api project(':common')
     api project(':common_service')
 
