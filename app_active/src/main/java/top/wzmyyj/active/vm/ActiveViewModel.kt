@@ -39,6 +39,13 @@ class ActiveViewModel(application: Application) : CBaseViewModel(application) {
             )
         )
         list.add(
+            ActiveSingleModel(
+                title = "pt实验",
+                action = 2,
+                desc = "这个是pt实验！"
+            )
+        )
+        list.add(
             ActivePathModel(
                 title = "WorkManager实验",
                 path = ActivityPath.ACTIVE,

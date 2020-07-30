@@ -1,10 +1,12 @@
 package top.wzmyyj.active
 
+import android.content.res.Resources
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import top.wzmyyj.common.test.TestActivity
 import top.wzmyyj.active.ui.ActiveFragment
 import top.wzmyyj.active.ui.WorkFragment
+import top.wzmyyj.active.utils.AdaptScreenUtil
 import top.wzmyyj.common_service.ActivityPath
 import top.wzmyyj.common_service.RouterManager
 
@@ -24,5 +26,9 @@ class ActiveActivity : TestActivity() {
             "work" -> return WorkFragment.newInstance()
         }
         return ActiveFragment.newInstance()
+    }
+
+    override fun getResources(): Resources {
+        return AdaptScreenUtil.adaptWidth(super.getResources(), 375)
     }
 }

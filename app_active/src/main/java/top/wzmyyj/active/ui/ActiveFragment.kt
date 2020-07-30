@@ -1,15 +1,20 @@
 package top.wzmyyj.active.ui
 
+import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import top.wzmyyj.active.ActiveActivity
+import top.wzmyyj.active.PtActivity
 import top.wzmyyj.common.base.CBaseFragment
 import top.wzmyyj.active.databinding.ActiveFragmentBinding
 import top.wzmyyj.active.model.ActivePathModel
 import top.wzmyyj.active.model.ActiveSingleModel
 import top.wzmyyj.active.ui.adapter.ActiveAdapter
+import top.wzmyyj.active.utils.AdaptScreenUtil
 import top.wzmyyj.active.vm.ActiveViewModel
 import top.wzmyyj.common_service.RouterManager
 
@@ -85,8 +90,13 @@ class ActiveFragment : CBaseFragment() {
 
         override fun onSingleClick(model: ActiveSingleModel) {
             when (model.action) {
-                1 -> vm.showToast(model.desc)
-
+                1 -> {
+                    vm.showToast(model.desc)
+                    startActivity(Intent(context!!, ActiveActivity::class.java))
+                }
+                2 -> {
+                    startActivity(Intent(context!!, PtActivity::class.java))
+                }
             }
         }
     }
